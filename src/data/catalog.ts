@@ -6,161 +6,134 @@ import moth from "@/assets/suits/moth.jpg";
 import owl from "@/assets/suits/owl.jpg";
 import spade from "@/assets/suits/spade.jpg";
 
-export const STUDIO = {
-  name: "Hollowbloom",
-  mark: "HB",
-  repo: "https://github.com/ceoempresarial1-cell/hollowbloom",
-  slots: 3,
-  season: "Spring 2027",
-  deposit: 0.4,
-  midpoint: 0.4,
-} as const;
+export const repo = "https://github.com/ceoempresarial1-cell/hollowbloom";
 
-export type BaseId = "mini" | "partial" | "three" | "plant" | "digi";
-
-export type Addon = {
-  id: string;
-  name: string;
-  price: number;
-  detail: string;
+export type Wear = {
+  upper: string;
+  lower: string;
+  legs: string;
+  feet: string;
+  face: string;
 };
 
-export type Species = {
+export type Cryptid = {
   id: string;
   name: string;
   epithet: string;
   blurb: string;
   image: string;
-  signature: string[];
+  wear: Wear;
 };
 
-export const bases: { id: BaseId; name: string; price: number; detail: string }[] = [
-  {
-    id: "mini",
-    name: "Mini partial",
-    price: 1450,
-    detail: "Head, short neck, and a display tail.",
-  },
-  {
-    id: "partial",
-    name: "Partial",
-    price: 2850,
-    detail: "Head, handpaws, and tail. The usual first suit.",
-  },
-  {
-    id: "three",
-    name: "Three-quarter",
-    price: 4600,
-    detail: "A partial, plus sleeves and footpaws.",
-  },
-  {
-    id: "plant",
-    name: "Plantigrade fullsuit",
-    price: 6800,
-    detail: "Full body on feet you can actually walk in.",
-  },
-  {
-    id: "digi",
-    name: "Digitigrade fullsuit",
-    price: 9200,
-    detail: "Fullsuit on raised feet, with the extra balance work.",
-  },
-];
-
-export const addons: Addon[] = [
-  { id: "eyes", name: "Follow-me eyes", price: 320, detail: "Eyes that track the room." },
-  { id: "jaw", name: "Moving jaw", price: 520, detail: "Hinged muzzle on a hidden pull." },
-  { id: "tongue", name: "Magnetic tongue", price: 95, detail: "Comes off for cleaning." },
-  { id: "led", name: "Neon bat lamps", price: 240, detail: "Pink, lilac, or mint light in the fur." },
-  { id: "wings", name: "Wings", price: 860, detail: "Bat, moth, or a bow-tied membrane." },
-  { id: "horns", name: "Antlers or horns", price: 380, detail: "Light foam, heart charms optional." },
-  { id: "tail", name: "Long display tail", price: 290, detail: "A tail meant to be seen, not sat on." },
-  { id: "paint", name: "Split-dye airbrush", price: 420, detail: "Pink, lilac, mint, and sky on black." },
-  { id: "ruff", name: "Collar or bow", price: 210, detail: "Peter Pan collar, bow, or a heart-lock choker." },
-  { id: "fan", name: "Head cooling fan", price: 165, detail: "A quiet fan in the skull." },
-  { id: "claws", name: "Resin claw set", price: 75, detail: "Matte black tips with tiny pink hearts." },
-];
-
-export const species: Species[] = [
+export const cryptids: Cryptid[] = [
   {
     id: "mothveil",
     name: "Mothveil",
-    epithet: "Split-dye moth",
-    blurb: "Half black, half baby pink, with a satin bow and bat-wing antennae.",
+    epithet: "Bat-wing antennae",
+    blurb: "Half the fur drops into baby pink. The bow is almost a warning.",
     image: moth,
-    signature: ["wings", "paint", "led", "eyes"],
+    wear: { upper: "sweater", lower: "tennis", legs: "fishnets", feet: "boots", face: "liner" },
   },
   {
     id: "jackglass",
     name: "Jack-in-the-Glass",
-    epithet: "Heart-antler hare",
-    blurb: "Cream and hot pink, heart charms on the antlers, tennis-skirt ruff.",
+    epithet: "Heart-charm antlers",
+    blurb: "A hare in a tennis skirt, antlers hung with tiny hearts.",
     image: jack,
-    signature: ["horns", "paint", "ruff"],
+    wear: { upper: "babydoll", lower: "ruffle", legs: "thigh", feet: "janes", face: "freckles" },
   },
   {
     id: "kelp",
     name: "Kelp Horse",
     epithet: "Mint mane",
-    blurb: "Black fur, a mint mane with a bow, and sky-blue scales on the arms.",
+    blurb: "Black water-horse, mint hair, fishnet on the arms, a bow at the throat.",
     image: kelp,
-    signature: ["ruff", "paint", "led", "tail"],
+    wear: { upper: "cardigan", lower: "bloomers", legs: "fishnets", feet: "creepers", face: "bitten" },
   },
   {
     id: "spade",
     name: "Spade Saint",
-    epithet: "Heart-eyed spade",
-    blurb: "A round spade hood, one heart eye, and pink-and-black cartoon coffins.",
+    epithet: "Heart eye",
+    blurb: "One heart-shaped eye. Coffin prints with round corners and smiley ribs.",
     image: spade,
-    signature: ["paint", "led", "eyes"],
+    wear: { upper: "sweater", lower: "bloomers", legs: "bats", feet: "boots", face: "liner" },
   },
   {
     id: "fox",
     name: "Lantern Vixen",
     epithet: "Split-dye fox",
-    blurb: "Ember pink and black fur, a lilac bow, and a heart-lock choker.",
+    blurb: "Ember pink against black. The choker locks with a pastel heart.",
     image: fox,
-    signature: ["led", "paint", "tail", "claws"],
+    wear: { upper: "cardigan", lower: "tennis", legs: "bats", feet: "janes", face: "freckles" },
   },
   {
     id: "owl",
     name: "Bone Owl",
-    epithet: "Doll-eyed owl",
-    blurb: "Lilac shadow, bone-print wings, and a bow almost bigger than the head.",
+    epithet: "Doll lashes",
+    blurb: "Lashes on both lids, bone-print wings, a bow bigger than the stare.",
     image: owl,
-    signature: ["wings", "eyes", "ruff"],
+    wear: { upper: "babydoll", lower: "ruffle", legs: "thigh", feet: "boots", face: "blacklip" },
   },
 ];
 
 export const atelierImage = atelier;
 
-export const money = (n: number) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(n);
+type Piece = { id: string; name: string; note: string };
 
-export function findBase(id: BaseId) {
-  const base = bases.find((item) => item.id === id);
-  if (!base) throw new Error(`Unknown base: ${id}`);
-  return base;
+export const wardrobe: { id: keyof Wear; label: string; pieces: Piece[] }[] = [
+  {
+    id: "upper",
+    label: "Upper",
+    pieces: [
+      { id: "sweater", name: "Melting sweater", note: "Oversized knit. Cartoon ribs. Letters that drip." },
+      { id: "babydoll", name: "Babydoll dress", note: "Peter Pan collar, short hem, black underneath." },
+      { id: "cardigan", name: "Crop and cardigan", note: "A small top under an open pastel knit." },
+    ],
+  },
+  {
+    id: "lower",
+    label: "Lower",
+    pieces: [
+      { id: "tennis", name: "Tennis skirt", note: "High waist, sharp pleats, pink against black." },
+      { id: "ruffle", name: "Ruffle mini", note: "Tiers that bounce. Looks soft. Is not." },
+      { id: "bloomers", name: "Bloomers", note: "Puffed, high, finished with a tiny bow." },
+    ],
+  },
+  {
+    id: "legs",
+    label: "Legs",
+    pieces: [
+      { id: "fishnets", name: "Pastel fishnets", note: "Mint or baby pink, torn on purpose." },
+      { id: "thigh", name: "Thigh-highs", note: "Garters built in. A bow at each top." },
+      { id: "bats", name: "Bat-wing socks", note: "Little wings at the ankle, or a bone print." },
+    ],
+  },
+  {
+    id: "feet",
+    label: "Feet",
+    pieces: [
+      { id: "boots", name: "Platform boots", note: "Massive. Pastel laces. Silver spikes." },
+      { id: "creepers", name: "Creepers", note: "Thick soles that keep the soft parts grounded." },
+      { id: "janes", name: "Mary Janes", note: "Double platform, heart strap, a little vicious." },
+    ],
+  },
+  {
+    id: "face",
+    label: "Face",
+    pieces: [
+      { id: "liner", name: "Winged liner", note: "Black geometric wings. Lilac in the crease." },
+      { id: "bitten", name: "Bitten lip", note: "Pink only in the center, faded at the edges." },
+      { id: "freckles", name: "Heart freckles", note: "Porcelain blush, hearts across the nose." },
+      { id: "blacklip", name: "Matte black", note: "A flat black mouth. Doll, then feral." },
+    ],
+  },
+];
+
+export function findCryptid(id: string) {
+  return cryptids.find((item) => item.id === id) ?? cryptids[0];
 }
 
-export function quoteTotal(baseId: BaseId, addonIds: readonly string[]) {
-  const extra = addons
-    .filter((item) => addonIds.includes(item.id))
-    .reduce((sum, item) => sum + item.price, 0);
-  return findBase(baseId).price + extra;
-}
-
-export function splitPay(total: number) {
-  const deposit = Math.round(total * STUDIO.deposit);
-  const midpoint = Math.round(total * STUDIO.midpoint);
-  const finale = total - deposit - midpoint;
-  return { deposit, midpoint, finale };
-}
-
-export function findSpecies(id: string) {
-  return species.find((item) => item.id === id) ?? species[0];
+export function piece(layer: keyof Wear, id: string) {
+  const group = wardrobe.find((item) => item.id === layer);
+  return group?.pieces.find((item) => item.id === id) ?? group?.pieces[0];
 }
