@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Check, Copy, Feather, Gem, Github } from "lucide-react";
+import { Check, Copy, Github, Heart, Sparkles } from "lucide-react";
 import {
   STUDIO,
   addons,
@@ -145,17 +145,17 @@ export function HollowbloomPage() {
   }
 
   return (
-    <div className="chapel min-h-screen">
+    <div className="doll min-h-screen">
       <a
         href="#card"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-30 focus:bg-glass focus:px-3 focus:py-2 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-30 focus:bg-pink focus:px-3 focus:py-2 focus:text-ink"
       >
         Skip to the card
       </a>
-      <header className="sticky top-0 z-20 border-b border-gold/30 bg-ink/90 backdrop-blur">
+      <header className="sticky top-0 z-20 border-b border-pink/30 bg-ink/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-          <a href="#top" className="flex items-center gap-2 text-bone">
-            <Gem className="size-5 text-gold" aria-hidden="true" />
+          <a href="#top" className="flex items-center gap-2 text-blush">
+            <Heart className="size-5 text-pink" aria-hidden="true" />
             <span className="font-display text-lg tracking-wide">Hollowbloom</span>
           </a>
           <nav className="flex flex-wrap gap-1" aria-label="On this card">
@@ -163,7 +163,7 @@ export function HollowbloomPage() {
               <a
                 key={item.href}
                 href={item.href}
-                className="inline-flex min-h-11 items-center rounded-full px-3 text-sm text-ash hover:text-bone"
+                className="inline-flex min-h-11 items-center rounded-full px-3 text-sm text-ash hover:text-blush"
               >
                 {item.label}
               </a>
@@ -175,28 +175,42 @@ export function HollowbloomPage() {
       <main id="top" className="mx-auto max-w-6xl px-4 pb-20 pt-8 sm:pt-12">
         <section id="card" className="grid scroll-mt-24 items-start gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-5">
-            <p className="flex items-center gap-2 text-xs font-semibold tracking-widest text-gold uppercase">
-              <Feather className="size-4" aria-hidden="true" />
-              Cryptid fursuit atelier
+            <p className="flex items-center gap-2 text-xs font-semibold tracking-widest text-pink uppercase">
+              <Sparkles className="size-4" aria-hidden="true" />
+              Cute goth fursuit atelier
             </p>
-            <h1 className="font-display text-4xl leading-tight text-bone sm:text-6xl">
-              Suits dyed like chapel glass.
+            <h1 className="split-dye font-display text-4xl leading-tight sm:text-6xl">
+              Black boots. Pink cryptids.
             </h1>
             <p className="max-w-xl text-lg text-ash">
-              Hollowbloom builds one-off cryptids you can wear. Gothic in the bones,
-              jewel-bright in the fur. This card is the public ledger: floors, add-ons,
-              and a quote you can copy.
+              Oversized bows on black fur, split-dye pink, doll lashes, and platform
+              paws. Lilac, mint, and sky sit on top so the suit looks soft and a
+              little intimidating.
             </p>
+            <ul className="flex flex-wrap gap-2" aria-label="Palette">
+              <li className="inline-flex min-h-11 items-center gap-2 rounded-full bg-panel px-3 text-sm text-blush">
+                <span className="size-3 rounded-full bg-pink" /> Pink
+              </li>
+              <li className="inline-flex min-h-11 items-center gap-2 rounded-full bg-panel px-3 text-sm text-blush">
+                <span className="size-3 rounded-full bg-lilac" /> Lilac
+              </li>
+              <li className="inline-flex min-h-11 items-center gap-2 rounded-full bg-panel px-3 text-sm text-blush">
+                <span className="size-3 rounded-full bg-mint" /> Mint
+              </li>
+              <li className="inline-flex min-h-11 items-center gap-2 rounded-full bg-panel px-3 text-sm text-blush">
+                <span className="size-3 rounded-full bg-sky" /> Sky
+              </li>
+            </ul>
             <div className="flex flex-wrap gap-3">
               <a
                 href="#quote"
-                className="inline-flex min-h-11 items-center rounded-full bg-glass px-5 font-semibold text-ink"
+                className="inline-flex min-h-11 items-center rounded-full bg-pink px-5 font-semibold text-ink"
               >
                 Build a quote
               </a>
               <a
                 href="#prices"
-                className="inline-flex min-h-11 items-center rounded-full border border-gold px-5 text-bone"
+                className="inline-flex min-h-11 items-center rounded-full border border-pink px-5 text-blush"
               >
                 Read the prices
               </a>
@@ -204,15 +218,15 @@ export function HollowbloomPage() {
             <dl className="grid grid-cols-3 gap-3 pt-2">
               <div>
                 <dt className="text-xs tracking-wide text-ash uppercase">Open slots</dt>
-                <dd className="font-display text-2xl text-bone tabular-nums">{STUDIO.slots}</dd>
+                <dd className="font-display text-2xl text-blush tabular-nums">{STUDIO.slots}</dd>
               </div>
               <div>
                 <dt className="text-xs tracking-wide text-ash uppercase">Deposit</dt>
-                <dd className="font-display text-2xl text-bone">40%</dd>
+                <dd className="font-display text-2xl text-blush">40%</dd>
               </div>
               <div>
                 <dt className="text-xs tracking-wide text-ash uppercase">Handoff</dt>
-                <dd className="font-display text-lg text-bone sm:text-2xl">{STUDIO.season}</dd>
+                <dd className="font-display text-lg text-blush sm:text-2xl">{STUDIO.season}</dd>
               </div>
             </dl>
           </div>
@@ -220,14 +234,14 @@ export function HollowbloomPage() {
           <article className="frame p-3 sm:p-4" aria-label="Hollowbloom commission card">
             <img
               src={atelierImage}
-              alt="Chapel atelier with moth, jackalope, kelpie, and owl fursuits on dress forms"
+              alt="Cute goth atelier with pink-and-black moth, jackalope, kelpie, and owl fursuits"
               className="aspect-video w-full rounded-lg object-cover"
             />
             <div className="px-2 pt-4 pb-2 sm:px-3">
               <div className="flex items-end justify-between gap-3">
                 <div>
-                  <p className="text-xs tracking-widest text-gold uppercase">Commission card</p>
-                  <h2 className="font-display text-2xl text-bone">Starting floors</h2>
+                  <p className="text-xs tracking-widest text-pink uppercase">Commission card</p>
+                  <h2 className="font-display text-2xl text-blush">Starting floors</h2>
                 </div>
                 <p className="text-right text-sm text-ash">
                   {STUDIO.slots} slots
@@ -239,15 +253,15 @@ export function HollowbloomPage() {
                 {bases.map((item) => (
                   <li
                     key={item.id}
-                    className="flex items-baseline justify-between gap-3 border-b border-gold/25 py-2 text-sm"
+                    className="flex items-baseline justify-between gap-3 border-b border-pink/25 py-2 text-sm"
                   >
-                    <span className="text-bone">{item.name}</span>
-                    <span className="font-semibold text-gold tabular-nums">{money(item.price)}</span>
+                    <span className="text-blush">{item.name}</span>
+                    <span className="font-semibold text-pink tabular-nums">{money(item.price)}</span>
                   </li>
                 ))}
               </ul>
               <p className="pt-3 text-sm text-ash">
-                Floors, not ceilings. Markings, wings, and odd skulls sit above the number.
+                Floors, not ceilings. Bows, split-dye, and platform paws sit above the number.
               </p>
             </div>
           </article>
@@ -255,8 +269,8 @@ export function HollowbloomPage() {
 
         <section id="cryptids" className="scroll-mt-24 pt-16">
           <div className="mb-6 max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-gold uppercase">The menagerie</p>
-            <h2 className="mt-2 font-display text-3xl text-bone sm:text-4xl">Six cryptids, ready to wear.</h2>
+            <p className="text-xs font-semibold tracking-widest text-pink uppercase">The menagerie</p>
+            <h2 className="mt-2 font-display text-3xl text-blush sm:text-4xl">Six cryptids, ready to wear.</h2>
             <p className="mt-3 text-ash">
               Pick a look and its signature pieces land on the quote. Uncheck anything
               that is not your cryptid.
@@ -274,7 +288,7 @@ export function HollowbloomPage() {
                     aria-pressed={selected}
                     className={
                       "frame flex h-full w-full flex-col p-3 text-left transition " +
-                      (selected ? "ring-2 ring-glass" : "hover:ring-2 hover:ring-gold")
+                      (selected ? "ring-2 ring-mint" : "hover:ring-2 hover:ring-pink")
                     }
                   >
                     <img
@@ -283,10 +297,10 @@ export function HollowbloomPage() {
                       className="aspect-3/4 w-full rounded-lg object-cover"
                     />
                     <div className="flex flex-1 flex-col gap-1 px-1 pt-3 pb-1">
-                      <p className="text-xs tracking-widest text-gold uppercase">{item.epithet}</p>
-                      <h3 className="font-display text-xl text-bone">{item.name}</h3>
+                      <p className="text-xs tracking-widest text-pink uppercase">{item.epithet}</p>
+                      <h3 className="font-display text-xl text-blush">{item.name}</h3>
                       <p className="text-sm text-ash">{item.blurb}</p>
-                      <p className="mt-auto pt-3 text-sm font-semibold text-bone tabular-nums">
+                      <p className="mt-auto pt-3 text-sm font-semibold text-blush tabular-nums">
                         Partial from {money(from)}
                       </p>
                     </div>
@@ -299,8 +313,8 @@ export function HollowbloomPage() {
 
         <section id="prices" className="scroll-mt-24 pt-16">
           <div className="mb-6 max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-gold uppercase">The ledger</p>
-            <h2 className="mt-2 font-display text-3xl text-bone sm:text-4xl">What the work costs.</h2>
+            <p className="text-xs font-semibold tracking-widest text-pink uppercase">The ledger</p>
+            <h2 className="mt-2 font-display text-3xl text-blush sm:text-4xl">What the work costs.</h2>
             <p className="mt-3 text-ash">
               Paid in three beats: 40% to hold the slot, 40% when the foam is approved,
               20% before it ships. Turnaround runs about eight to fourteen months.
@@ -308,13 +322,13 @@ export function HollowbloomPage() {
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="frame p-4 sm:p-6">
-              <h3 className="font-display text-xl text-bone">Bases</h3>
+              <h3 className="font-display text-xl text-blush">Bases</h3>
               <ul className="mt-3">
                 {bases.map((item) => (
-                  <li key={item.id} className="border-b border-gold/25 py-3 last:border-b-0">
+                  <li key={item.id} className="border-b border-pink/25 py-3 last:border-b-0">
                     <div className="flex items-baseline justify-between gap-3">
-                      <span className="font-semibold text-bone">{item.name}</span>
-                      <span className="text-gold tabular-nums">{money(item.price)}</span>
+                      <span className="font-semibold text-blush">{item.name}</span>
+                      <span className="text-pink tabular-nums">{money(item.price)}</span>
                     </div>
                     <p className="mt-1 text-sm text-ash">{item.detail}</p>
                   </li>
@@ -322,13 +336,13 @@ export function HollowbloomPage() {
               </ul>
             </div>
             <div className="frame p-4 sm:p-6">
-              <h3 className="font-display text-xl text-bone">Add-ons</h3>
+              <h3 className="font-display text-xl text-blush">Add-ons</h3>
               <ul className="mt-3">
                 {addons.map((item) => (
-                  <li key={item.id} className="border-b border-gold/25 py-3 last:border-b-0">
+                  <li key={item.id} className="border-b border-pink/25 py-3 last:border-b-0">
                     <div className="flex items-baseline justify-between gap-3">
-                      <span className="font-semibold text-bone">{item.name}</span>
-                      <span className="text-gold tabular-nums">{money(item.price)}</span>
+                      <span className="font-semibold text-blush">{item.name}</span>
+                      <span className="text-pink tabular-nums">{money(item.price)}</span>
                     </div>
                     <p className="mt-1 text-sm text-ash">{item.detail}</p>
                   </li>
@@ -340,8 +354,8 @@ export function HollowbloomPage() {
 
         <section id="quote" className="scroll-mt-24 pt-16">
           <div className="mb-6 max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-gold uppercase">Your slip</p>
-            <h2 className="mt-2 font-display text-3xl text-bone sm:text-4xl">
+            <p className="text-xs font-semibold tracking-widest text-pink uppercase">Your slip</p>
+            <h2 className="mt-2 font-display text-3xl text-blush sm:text-4xl">
               Price {look.name}.
             </h2>
             <p className="mt-3 text-ash">
@@ -353,7 +367,7 @@ export function HollowbloomPage() {
           <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="frame flex flex-col gap-6 p-4 sm:p-6">
               <fieldset>
-                <legend className="font-display text-lg text-bone">Cryptid</legend>
+                <legend className="font-display text-lg text-blush">Cryptid</legend>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {species.map((item) => {
                     const on = item.id === speciesId;
@@ -365,7 +379,7 @@ export function HollowbloomPage() {
                         onClick={() => chooseSpecies(item.id)}
                         className={
                           "min-h-11 rounded-full px-4 text-sm " +
-                          (on ? "bg-glass font-semibold text-ink" : "border border-gold/50 text-bone")
+                          (on ? "bg-pink font-semibold text-ink" : "border border-pink/50 text-blush")
                         }
                       >
                         {item.name}
@@ -376,14 +390,14 @@ export function HollowbloomPage() {
               </fieldset>
 
               <fieldset>
-                <legend className="font-display text-lg text-bone">Base</legend>
+                <legend className="font-display text-lg text-blush">Base</legend>
                 <div className="mt-3 flex flex-col gap-2">
                   {bases.map((item) => (
                     <label
                       key={item.id}
                       className={
                         "flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-xl border px-3 py-2 " +
-                        (item.id === baseId ? "border-glass bg-ink" : "border-gold/30")
+                        (item.id === baseId ? "border-mint bg-ink" : "border-pink/30")
                       }
                     >
                       <span className="flex items-center gap-3">
@@ -393,21 +407,21 @@ export function HollowbloomPage() {
                           value={item.id}
                           checked={item.id === baseId}
                           onChange={() => setBaseId(item.id)}
-                          className="size-4 accent-glass"
+                          className="size-4 accent-pink"
                         />
                         <span>
-                          <span className="block text-bone">{item.name}</span>
+                          <span className="block text-blush">{item.name}</span>
                           <span className="block text-sm text-ash">{item.detail}</span>
                         </span>
                       </span>
-                      <span className="shrink-0 text-gold tabular-nums">{money(item.price)}</span>
+                      <span className="shrink-0 text-pink tabular-nums">{money(item.price)}</span>
                     </label>
                   ))}
                 </div>
               </fieldset>
 
               <fieldset>
-                <legend className="font-display text-lg text-bone">Add-ons</legend>
+                <legend className="font-display text-lg text-blush">Add-ons</legend>
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
                   {addons.map((item) => {
                     const on = addonIds.includes(item.id);
@@ -416,19 +430,19 @@ export function HollowbloomPage() {
                         key={item.id}
                         className={
                           "flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border px-3 py-3 " +
-                          (on ? "border-glass bg-ink" : "border-gold/30")
+                          (on ? "border-mint bg-ink" : "border-pink/30")
                         }
                       >
                         <input
                           type="checkbox"
                           checked={on}
                           onChange={() => toggleAddon(item.id)}
-                          className="mt-1 size-4 accent-glass"
+                          className="mt-1 size-4 accent-pink"
                         />
                         <span className="min-w-0">
                           <span className="flex items-baseline justify-between gap-2">
-                            <span className="text-bone">{item.name}</span>
-                            <span className="text-sm text-gold tabular-nums">{money(item.price)}</span>
+                            <span className="text-blush">{item.name}</span>
+                            <span className="text-sm text-pink tabular-nums">{money(item.price)}</span>
                           </span>
                           <span className="block text-sm text-ash">{item.detail}</span>
                         </span>
@@ -448,7 +462,7 @@ export function HollowbloomPage() {
                       if (nameError) setNameError("");
                     }}
                     autoComplete="name"
-                    className="mt-1 min-h-11 w-full rounded-xl border border-gold/40 bg-ink px-3 text-bone"
+                    className="mt-1 min-h-11 w-full rounded-xl border border-pink/40 bg-ink px-3 text-blush"
                   />
                 </label>
                 <label className="block text-sm text-ash">
@@ -458,7 +472,7 @@ export function HollowbloomPage() {
                     onChange={(event) => setContact(event.target.value)}
                     autoComplete="email"
                     placeholder="Email or handle"
-                    className="mt-1 min-h-11 w-full rounded-xl border border-gold/40 bg-ink px-3 text-bone placeholder:text-ash/70"
+                    className="mt-1 min-h-11 w-full rounded-xl border border-pink/40 bg-ink px-3 text-blush placeholder:text-ash/70"
                   />
                 </label>
                 <label className="block text-sm text-ash sm:col-span-2">
@@ -468,12 +482,12 @@ export function HollowbloomPage() {
                     onChange={(event) => setNotes(event.target.value)}
                     rows={3}
                     placeholder="Colors, refs, deadline wishes"
-                    className="mt-1 w-full rounded-xl border border-gold/40 bg-ink px-3 py-3 text-bone placeholder:text-ash/70"
+                    className="mt-1 w-full rounded-xl border border-pink/40 bg-ink px-3 py-3 text-blush placeholder:text-ash/70"
                   />
                 </label>
               </div>
               {nameError ? (
-                <p className="text-sm text-gold" role="alert">
+                <p className="text-sm text-pink" role="alert">
                   {nameError}
                 </p>
               ) : null}
@@ -481,14 +495,14 @@ export function HollowbloomPage() {
                 <button
                   type="button"
                   onClick={saveSlip}
-                  className="inline-flex min-h-11 items-center rounded-full bg-glass px-5 font-semibold text-ink"
+                  className="inline-flex min-h-11 items-center rounded-full bg-pink px-5 font-semibold text-ink"
                 >
                   Save slip on this device
                 </button>
                 <button
                   type="button"
                   onClick={copySlip}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-gold px-5 text-bone"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-pink px-5 text-blush"
                 >
                   {copied ? <Check className="size-4" aria-hidden="true" /> : <Copy className="size-4" aria-hidden="true" />}
                   {copied ? "Copied" : "Copy slip"}
@@ -497,57 +511,57 @@ export function HollowbloomPage() {
             </div>
 
             <aside className="frame sticky top-24 p-4 sm:p-5">
-              <p className="text-xs tracking-widest text-gold uppercase">{look.name}</p>
-              <h3 className="mt-1 font-display text-2xl text-bone">{base.name}</h3>
+              <p className="text-xs tracking-widest text-pink uppercase">{look.name}</p>
+              <h3 className="mt-1 font-display text-2xl text-blush">{base.name}</h3>
               <p className="mt-2 text-sm text-ash">{look.blurb}</p>
               <dl className="mt-4 space-y-2 text-sm">
                 <div className="flex justify-between gap-3">
                   <dt className="text-ash">Base</dt>
-                  <dd className="text-bone tabular-nums">{money(base.price)}</dd>
+                  <dd className="text-blush tabular-nums">{money(base.price)}</dd>
                 </div>
                 <div className="flex justify-between gap-3">
                   <dt className="text-ash">Add-ons</dt>
-                  <dd className="text-bone tabular-nums">{money(total - base.price)}</dd>
+                  <dd className="text-blush tabular-nums">{money(total - base.price)}</dd>
                 </div>
-                <div className="flex justify-between gap-3 border-t border-gold/30 pt-2 text-base">
-                  <dt className="font-semibold text-bone">Total</dt>
-                  <dd className="font-semibold text-gold tabular-nums">{money(total)}</dd>
+                <div className="flex justify-between gap-3 border-t border-pink/30 pt-2 text-base">
+                  <dt className="font-semibold text-blush">Total</dt>
+                  <dd className="font-semibold text-pink tabular-nums">{money(total)}</dd>
                 </div>
                 <div className="flex justify-between gap-3">
                   <dt className="text-ash">Deposit</dt>
-                  <dd className="text-bone tabular-nums">{money(pay.deposit)}</dd>
+                  <dd className="text-blush tabular-nums">{money(pay.deposit)}</dd>
                 </div>
                 <div className="flex justify-between gap-3">
                   <dt className="text-ash">Foam approval</dt>
-                  <dd className="text-bone tabular-nums">{money(pay.midpoint)}</dd>
+                  <dd className="text-blush tabular-nums">{money(pay.midpoint)}</dd>
                 </div>
                 <div className="flex justify-between gap-3">
                   <dt className="text-ash">Before ship</dt>
-                  <dd className="text-bone tabular-nums">{money(pay.finale)}</dd>
+                  <dd className="text-blush tabular-nums">{money(pay.finale)}</dd>
                 </div>
               </dl>
             </aside>
           </div>
 
           <div className="mt-4 frame p-4 sm:p-6">
-            <h3 className="font-display text-xl text-bone">Saved on this device</h3>
+            <h3 className="font-display text-xl text-blush">Saved on this device</h3>
             {slips.length === 0 ? (
               <p className="mt-2 text-sm text-ash">
                 No slips yet. Build a quote and save it — it stays in this browser only.
               </p>
             ) : (
-              <ul className="mt-3 divide-y divide-gold/25">
+              <ul className="mt-3 divide-y divide-pink/25">
                 {slips.map((slip) => (
                   <li key={slip.id} className="flex flex-wrap items-baseline justify-between gap-2 py-3">
                     <div>
-                      <p className="text-bone">
+                      <p className="text-blush">
                         {slip.name} · {findSpecies(slip.speciesId).name}
                       </p>
                       <p className="text-sm text-ash">
                         {findBase(slip.baseId).name} · {slip.at.slice(0, 16).replace("T", " ")}
                       </p>
                     </div>
-                    <p className="font-semibold text-gold tabular-nums">{money(slip.total)}</p>
+                    <p className="font-semibold text-pink tabular-nums">{money(slip.total)}</p>
                   </li>
                 ))}
               </ul>
@@ -556,7 +570,7 @@ export function HollowbloomPage() {
         </section>
       </main>
 
-      <footer className="border-t border-gold/30">
+      <footer className="border-t border-pink/30">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-xl text-sm text-ash">
             Hollowbloom is a planning card for cryptid fursuit commissions. It does not
@@ -564,7 +578,7 @@ export function HollowbloomPage() {
           </p>
           <a
             href={STUDIO.repo}
-            className="inline-flex min-h-11 items-center gap-2 text-sm text-gold"
+            className="inline-flex min-h-11 items-center gap-2 text-sm text-pink"
           >
             <Github className="size-4" aria-hidden="true" />
             New project on GitHub
