@@ -1,10 +1,93 @@
 import { useMemo, useState } from "react";
 import { atelierImage, cryptids, findCryptid, piece, repo, wardrobe, type Wear } from "@/data/catalog";
 
-const links = [
-  { href: "#closet", label: "Closet" },
-  { href: "#doll", label: "Doll" },
-  { href: "#room", label: "Room" },
+const jumps = [
+  {
+    href: "#rules",
+    title: "House rules",
+    blurb: "What to know before you ask for a cryptid.",
+    action: "Read",
+  },
+  {
+    href: "#faq",
+    title: "FAQ",
+    blurb: "How a suit gets from the closet to you.",
+    action: "Read",
+  },
+  {
+    href: "#prices",
+    title: "Prices",
+    blurb: "Not posted yet. The lookbook is the offer for now.",
+    action: "Read",
+  },
+  {
+    href: "#gallery",
+    title: "Gallery",
+    blurb: "Meet the cryptids. Newest mood, oldest teeth.",
+    action: "Browse",
+  },
+  {
+    href: "#doll",
+    title: "The doll",
+    blurb: "Layer a sweater, a skirt, and a pair of boots.",
+    action: "Dress",
+  },
+  {
+    href: "#care",
+    title: "Fursuit care",
+    blurb: "How to keep the fur soft and a little mean.",
+    action: "Read",
+  },
+  {
+    href: "#den",
+    title: "The den",
+    blurb: "The room they stand in when nobody is wearing them.",
+    action: "See",
+  },
+];
+
+const rules = [
+  {
+    title: "General",
+    points: [
+      "Commissions, when they open, are for adults.",
+      "No copyrighted characters, and nothing built to look like one.",
+      "Say what the cryptid is. A reference with a front, a back, and the face is enough.",
+      "The atelier can turn a design down. Kindness is the whole tone.",
+    ],
+  },
+  {
+    title: "Making",
+    points: [
+      "Black fur is the base. Pink, lilac, mint, and sky sit on top.",
+      "Split dye, bows, doll lashes, and platform paws are the house style.",
+      "Changes after a look is locked get talked through before any work moves.",
+      "You will see the suit while it is being built, not only at the end.",
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: "How do I get a suit from here?",
+    a: "Browse the gallery, dress a doll so the look is clear, then wait. Applications are not open on this page yet.",
+  },
+  {
+    q: "When do applications open?",
+    a: "When a batch of cryptids is finished. This page is the place that will say so.",
+  },
+  {
+    q: "How much does a suit cost?",
+    a: "Prices are not posted yet. Do not guess from the lookbook.",
+  },
+  {
+    q: "Which creatures can you make?",
+    a: "The six in the gallery are the house set: moth, hare, water-horse, spade, fox, and owl. Other furry cryptids can be talked through later. Nothing borrowed from a studio that owns the character.",
+  },
+  {
+    q: "Can I wear it hard?",
+    a: "Yes. Care is brushing, cool air, and a wash when it needs one. See Fursuit care.",
+  },
 ];
 
 export function HollowbloomPage() {
@@ -13,12 +96,13 @@ export function HollowbloomPage() {
   const look = findCryptid(cryptidId);
 
   const dressed = useMemo(() => {
-    const upper = piece("upper", wear.upper);
-    const lower = piece("lower", wear.lower);
-    const legs = piece("legs", wear.legs);
-    const feet = piece("feet", wear.feet);
-    const face = piece("face", wear.face);
-    return { upper, lower, legs, feet, face };
+    return {
+      upper: piece("upper", wear.upper),
+      lower: piece("lower", wear.lower),
+      legs: piece("legs", wear.legs),
+      feet: piece("feet", wear.feet),
+      face: piece("face", wear.face),
+    };
   }, [wear]);
 
   function choose(id: string) {
@@ -34,186 +118,224 @@ export function HollowbloomPage() {
   return (
     <div className="room min-h-screen">
       <a
-        href="#closet"
+        href="#top"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-30 focus:bg-pink focus:px-3 focus:py-2 focus:text-ink"
       >
-        Skip to the closet
+        Skip to the top
       </a>
-      <header className="sticky top-0 z-20 border-b border-pink/40 bg-ink/90 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl flex-wrap gap-1 px-4 py-2" aria-label="Atelier">
-          {links.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-bold text-ash hover:text-blush"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </header>
 
-      <main className="mx-auto max-w-6xl px-4 pb-20 pt-6">
-        <section id="closet" className="scroll-mt-20">
-          <p className="text-xs font-extrabold tracking-widest text-pink uppercase">Scary cute</p>
-          <h1 className="drip mt-2 text-5xl sm:text-7xl">
-            <span className="text-pink">soft</span> <span className="text-blush">teeth.</span>
+      <main id="top" className="mx-auto max-w-xl px-5 pt-16 pb-24">
+        <header className="text-center">
+          <h1 className="drip text-5xl text-blush sm:text-6xl">
+            <span className="text-pink">Hollow</span>bloom
           </h1>
-          <p className="mt-3 max-w-xl text-lg text-ash">
-            Cryptids dressed like a haunted bedroom. Black holds the shape. Baby
-            pink, lilac, mint, and sky sit on top, split down the middle.
+          <p className="mt-4 text-lg text-blush">Scary-cute cryptid fursuit maker</p>
+          <p className="mt-3 font-extrabold tracking-wide text-mint uppercase">Lookbook open</p>
+          <a
+            href="#gallery"
+            className="mt-6 inline-flex min-h-11 items-center justify-center px-4 text-lg font-extrabold tracking-widest text-pink uppercase"
+          >
+            Browse
+          </a>
+          <nav className="mt-2 flex flex-col items-center" aria-label="Atelier">
+            <a href="#doll" className="inline-flex min-h-11 items-center font-bold text-ash hover:text-blush">
+              The doll
+            </a>
+            <a href="#den" className="inline-flex min-h-11 items-center font-bold text-ash hover:text-blush">
+              The den
+            </a>
+            <a
+              href={repo}
+              className="inline-flex min-h-11 items-center font-bold text-ash hover:text-blush"
+            >
+              GitHub
+            </a>
+          </nav>
+        </header>
+
+        <div className="mt-10 border-t border-pink/40" />
+
+        <ul>
+          {jumps.map((item) => (
+            <li key={item.href} className="border-b border-pink/40 py-8 text-center">
+              <p className="text-2xl font-extrabold text-blush">{item.title}</p>
+              <p className="mt-2 text-ash">{item.blurb}</p>
+              <a
+                href={item.href}
+                className="mt-2 inline-flex min-h-11 items-center font-extrabold tracking-widest text-pink uppercase"
+              >
+                {item.action}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <section id="rules" className="scroll-mt-8 pt-16">
+          <h2 className="text-center text-3xl font-extrabold text-blush">House rules</h2>
+          <p className="mt-3 text-center text-ash">Read this before you ask for a suit.</p>
+          <div className="mt-8 flex flex-col gap-8">
+            {rules.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-sm font-extrabold tracking-widest text-pink uppercase">{group.title}</h3>
+                <ul className="mt-3 flex flex-col gap-2 text-ash">
+                  {group.points.map((point) => (
+                    <li key={point} className="border-l-2 border-lilac pl-3">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="faq" className="scroll-mt-8 pt-16">
+          <h2 className="text-center text-3xl font-extrabold text-blush">FAQ</h2>
+          <p className="mt-3 text-center text-ash">Short answers. The long ones live in the rules.</p>
+          <dl className="mt-8 flex flex-col gap-6">
+            {faqs.map((item) => (
+              <div key={item.q}>
+                <dt className="font-extrabold text-blush">Q: {item.q}</dt>
+                <dd className="mt-1 text-ash">A: {item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section id="prices" className="scroll-mt-8 pt-16 text-center">
+          <h2 className="text-3xl font-extrabold text-blush">Prices</h2>
+          <p className="mt-3 text-ash">
+            Not posted yet. Nothing on this page is for sale, and no number here is a quote.
           </p>
+        </section>
 
-          <figure className="sticker mt-6 p-3">
-            <div className="relative">
-              <img
-                src={look.image}
-                alt={`${look.name}, ${look.epithet}`}
-                className="aspect-3/4 w-full rounded-2xl object-cover sm:aspect-video sm:object-top"
-              />
-              <figcaption className="absolute inset-x-0 bottom-0 rounded-b-2xl bg-gradient-to-t from-ink via-ink/85 to-transparent p-4 sm:p-6">
-                <p className="text-xs font-extrabold tracking-widest text-mint uppercase">{look.epithet}</p>
-                <p className="font-sans text-3xl font-extrabold text-blush">{look.name}</p>
-                <p className="max-w-lg text-sm text-ash">{look.blurb}</p>
-              </figcaption>
-            </div>
-          </figure>
-
-          <ul className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
-            {cryptids.map((item) => {
-              const on = item.id === cryptidId;
-              return (
-                <li key={item.id}>
-                  <button
-                    type="button"
-                    onClick={() => choose(item.id)}
-                    aria-pressed={on}
-                    className={
-                      "w-full overflow-hidden rounded-2xl text-left " +
-                      (on ? "ring-2 ring-mint" : "ring-2 ring-transparent hover:ring-pink")
-                    }
-                  >
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="aspect-3/4 w-full object-cover"
-                    />
-                    <span className="block truncate px-1 py-2 text-center text-xs font-bold text-blush">
-                      {item.name}
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
+        <section id="gallery" className="scroll-mt-8 pt-16">
+          <h2 className="text-center text-3xl font-extrabold text-blush">Gallery</h2>
+          <p className="mt-3 text-center text-ash">Meet the family. Pick one, then dress it.</p>
+          <ul className="mt-8 flex flex-col gap-10">
+            {cryptids.map((item) => (
+              <li key={item.id} className="text-center">
+                <img
+                  src={item.image}
+                  alt={`${item.name}, ${item.epithet}`}
+                  className="aspect-3/4 w-full rounded-2xl object-cover"
+                />
+                <h3 className="mt-3 text-xl font-extrabold text-blush">{item.name}</h3>
+                <p className="text-sm font-bold tracking-widest text-mint uppercase">{item.epithet}</p>
+                <p className="mt-1 text-ash">{item.blurb}</p>
+                <a
+                  href="#doll"
+                  onClick={() => choose(item.id)}
+                  className="mt-1 inline-flex min-h-11 items-center font-extrabold tracking-widest text-pink uppercase"
+                >
+                  Dress
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
 
-        <section id="doll" className="scroll-mt-20 pt-16">
-          <p className="text-xs font-extrabold tracking-widest text-lilac uppercase">The doll</p>
-          <h2 className="mt-2 font-sans text-3xl font-extrabold text-blush sm:text-4xl">
-            Dress the fright.
-          </h2>
-          <p className="mt-2 max-w-xl text-ash">
-            Cozy on top, chunky underneath. Pick a layer. The look stays fragile
-            and a little mean.
+        <section id="doll" className="scroll-mt-8 pt-16">
+          <h2 className="text-center text-3xl font-extrabold text-blush">The doll</h2>
+          <p className="mt-3 text-center text-ash">
+            Cozy on top, chunky underneath. The look stays fragile and a little mean.
           </p>
+          <img
+            src={look.image}
+            alt=""
+            className="mt-8 aspect-3/4 w-full rounded-2xl object-cover"
+          />
+          <p className="mt-4 text-center text-lg font-extrabold text-blush">{look.name}</p>
+          <p className="mt-1 text-center text-sm text-ash">
+            {dressed.upper?.name}. {dressed.lower?.name}. {dressed.legs?.name}. {dressed.feet?.name}.{" "}
+            {dressed.face?.name}.
+          </p>
+          <div className="mt-8 flex flex-col gap-6">
+            {wardrobe.map((layer) => (
+              <fieldset key={layer.id}>
+                <legend className="text-sm font-extrabold tracking-widest text-pink uppercase">
+                  {layer.label}
+                </legend>
+                <div className="mt-2 flex flex-col gap-2">
+                  {layer.pieces.map((option) => {
+                    const on = wear[layer.id] === option.id;
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        aria-pressed={on}
+                        onClick={() => setLayer(layer.id, option.id)}
+                        className={
+                          "min-h-11 rounded-2xl border px-4 py-3 text-left " +
+                          (on
+                            ? "border-pink bg-pink text-ink"
+                            : "border-pink/40 bg-panel text-blush hover:border-lilac")
+                        }
+                      >
+                        <span className="block font-extrabold">{option.name}</span>
+                        <span className={"mt-1 block text-sm " + (on ? "text-ink/80" : "text-ash")}>
+                          {option.note}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
+            ))}
+          </div>
+        </section>
 
-          <div className="mt-6 grid items-start gap-4 lg:grid-cols-2">
-            <article className="sticker p-3">
-              <img
-                src={look.image}
-                alt=""
-                className="aspect-3/4 w-full rounded-2xl object-cover"
-              />
-              <div className="px-2 pt-4 pb-2">
-                <p className="text-xs font-extrabold tracking-widest text-sky uppercase">On the stand</p>
-                <p className="mt-2 text-lg font-extrabold text-blush">{look.name}</p>
-                <p className="mt-2 text-sm text-ash">
-                  {dressed.upper?.name}. {dressed.lower?.name}. {dressed.legs?.name}.{" "}
-                  {dressed.feet?.name}. {dressed.face?.name}.
-                </p>
-              </div>
-            </article>
-
-            <div className="flex flex-col gap-5">
-              {wardrobe.map((layer) => (
-                <fieldset key={layer.id}>
-                  <legend className="text-sm font-extrabold tracking-widest text-pink uppercase">
-                    {layer.label}
-                  </legend>
-                  <div className="mt-2 flex flex-col gap-2">
-                    {layer.pieces.map((option) => {
-                      const on = wear[layer.id] === option.id;
-                      return (
-                        <button
-                          key={option.id}
-                          type="button"
-                          aria-pressed={on}
-                          onClick={() => setLayer(layer.id, option.id)}
-                          className={
-                            "min-h-11 rounded-2xl border px-4 py-3 text-left " +
-                            (on
-                              ? "border-pink bg-pink text-ink"
-                              : "border-pink/40 bg-panel text-blush hover:border-lilac")
-                          }
-                        >
-                          <span className="block font-extrabold">{option.name}</span>
-                          <span className={"mt-1 block text-sm " + (on ? "text-ink/80" : "text-ash")}>
-                            {option.note}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </fieldset>
-              ))}
+        <section id="care" className="scroll-mt-8 pt-16">
+          <h2 className="text-center text-3xl font-extrabold text-blush">Fursuit care</h2>
+          <p className="mt-3 text-center text-ash">Brush it. Air it. Wash it when it asks.</p>
+          <div className="mt-8 flex flex-col gap-6 text-ash">
+            <div>
+              <h3 className="text-sm font-extrabold tracking-widest text-lilac uppercase">Every wear</h3>
+              <p className="mt-2">
+                Cool the head on a fan. Brush the fur in the direction it lies. Pink dye stays put if you
+                do not soak it for fun.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-extrabold tracking-widest text-mint uppercase">A real wash</h3>
+              <p className="mt-2">
+                Surface clean first. A tub wash only when it needs one, then dry completely before the
+                suit goes back on a stand. No heat.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-extrabold tracking-widest text-sky uppercase">Repairs</h3>
+              <p className="mt-2">
+                Loose stitches and a tired bow can come home. Write what broke. Do not send a dirty suit.
+              </p>
             </div>
           </div>
         </section>
 
-        <section id="room" className="scroll-mt-20 pt-16">
-          <p className="text-xs font-extrabold tracking-widest text-mint uppercase">The den</p>
-          <h2 className="mt-2 font-sans text-3xl font-extrabold text-blush sm:text-4xl">
-            A cartoon haunted house.
-          </h2>
-          <figure className="sticker mt-6 p-3">
-            <img
-              src={atelierImage}
-              alt="Black room with pink neon, pastel plush bats, and cryptid suits on stands"
-              className="aspect-video w-full rounded-2xl object-cover"
-            />
-          </figure>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
-            <li className="rounded-2xl bg-panel p-4">
+        <section id="den" className="scroll-mt-8 pt-16">
+          <h2 className="text-center text-3xl font-extrabold text-blush">The den</h2>
+          <p className="mt-3 text-center text-ash">A cartoon haunted house. No overhead white light.</p>
+          <img
+            src={atelierImage}
+            alt="Black room with pink neon, pastel plush bats, and cryptid suits on stands"
+            className="mt-8 aspect-video w-full rounded-2xl object-cover"
+          />
+          <ul className="mt-6 flex flex-col gap-4">
+            <li>
               <p className="font-extrabold text-pink">Plush pile</p>
-              <p className="mt-1 text-sm text-ash">
-                Bats, ribbed kittens, and three-eyed unicorns on a pink faux-fur rug.
-              </p>
+              <p className="text-sm text-ash">Bats, ribbed kittens, and three-eyed unicorns on a pink faux-fur rug.</p>
             </li>
-            <li className="rounded-2xl bg-panel p-4">
-              <p className="font-extrabold text-lilac">Neon, not daylight</p>
-              <p className="mt-1 text-sm text-ash">
-                Bat and moon lamps. Skull boxes glowing pink. No harsh white lights.
-              </p>
+            <li>
+              <p className="font-extrabold text-lilac">Neon</p>
+              <p className="text-sm text-ash">Bat and moon lamps. Skull boxes glowing pink.</p>
             </li>
-            <li className="rounded-2xl bg-panel p-4">
+            <li>
               <p className="font-extrabold text-mint">Vanity</p>
-              <p className="mt-1 text-sm text-ash">
-                Ghost candles with bows, pink pumpkin dishes, a wall of cute-mean frames.
-              </p>
+              <p className="text-sm text-ash">Ghost candles with bows, and a wall of cute-mean frames.</p>
             </li>
           </ul>
         </section>
       </main>
-
-      <footer className="border-t border-pink/40">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-ash">A scary-cute cryptid closet. Nothing for sale on this page.</p>
-          <a href={repo} className="inline-flex min-h-11 items-center text-sm font-bold text-pink">
-            Project on GitHub
-          </a>
-        </div>
-      </footer>
     </div>
   );
 }
