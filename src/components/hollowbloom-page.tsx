@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type AnimationEvent } from "react";
 
 const prices = [
   { name: "Fullsuit", image: "/prices/fullsuit-v2.png" },
@@ -51,9 +51,10 @@ function ExampleIcon({ kind }: { kind: View }) {
 
 export function HollowbloomPage() {
   const [confused, setConfused] = useState(false);
-  const [shaking, setShaking] = useState(false);
+  const [phase, setPhase] = useState<"idle" | "wobble" | "squish" | "rise">("idle");
   const [view, setView] = useState<View>("browse");
   const revertTimer = useRef<number | null>(null);
+  const swapToConfused = useRef(true);
 
   useEffect(() => {
     return () => {
@@ -67,16 +68,32 @@ export function HollowbloomPage() {
   }
 
   function pokeBunny() {
-    if (shaking) return;
-    setShaking(true);
+    if (phase !== "idle" || confused) return;
+    swapToConfused.current = true;
+    setPhase("wobble");
   }
 
-  function bunnySettled() {
-    if (!shaking) return;
-    setShaking(false);
-    setConfused(true);
-    if (revertTimer.current) window.clearTimeout(revertTimer.current);
-    revertTimer.current = window.setTimeout(() => setConfused(false), 3000);
+  function bunnySettled(event: AnimationEvent<HTMLButtonElement>) {
+    if (event.target !== event.currentTarget) return;
+    if (event.animationName === "bunny-shake") {
+      setPhase("squish");
+      return;
+    }
+    if (event.animationName === "bunny-squish") {
+      setConfused(swapToConfused.current);
+      setPhase("rise");
+      return;
+    }
+    if (event.animationName === "bunny-rise") {
+      setPhase("idle");
+      if (swapToConfused.current) {
+        if (revertTimer.current) window.clearTimeout(revertTimer.current);
+        revertTimer.current = window.setTimeout(() => {
+          swapToConfused.current = false;
+          setPhase("squish");
+        }, 3000);
+      }
+    }
   }
 
   return (
@@ -95,7 +112,7 @@ export function HollowbloomPage() {
         onAnimationEnd={bunnySettled}
         className={
           "fixed right-3 bottom-3 z-20 border-0 bg-transparent p-0 sm:right-4 sm:bottom-4 " +
-          (shaking ? "bunny-shake" : "")
+          (phase === "wobble" ? "bunny-shake" : phase === "squish" ? "bunny-squish" : phase === "rise" ? "bunny-rise" : "")
         }
       >
         <img

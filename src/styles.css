@@ -86,7 +86,38 @@
 
 .bunny-shake {
   animation: bunny-shake 0.7s ease-in-out;
-  transform-origin: center center;
+  transform-origin: center bottom;
+}
+
+@keyframes bunny-squish {
+  from {
+    transform: translateY(0) scale(1, 1);
+  }
+  to {
+    transform: translateY(8px) scale(1.22, 0.14);
+  }
+}
+
+@keyframes bunny-rise {
+  from {
+    transform: translateY(8px) scale(1.22, 0.14);
+  }
+  to {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+.bunny-squish,
+.bunny-rise {
+  transform-origin: center bottom;
+}
+
+.bunny-squish {
+  animation: bunny-squish 0.16s ease-in forwards;
+}
+
+.bunny-rise {
+  animation: bunny-rise 0.28s cubic-bezier(0.2, 1.15, 0.36, 1) forwards;
 }
 
 .plaque {
