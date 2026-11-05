@@ -259,20 +259,24 @@ export function HollowbloomPage() {
 
           {view === "prices" ? (
             <section className="pt-10">
-              <h2 className="text-center text-3xl font-extrabold text-blush">Fursuit prices</h2>
-              <ul className="mt-8 flex flex-col gap-4">
+              <h2 className="mx-auto w-fit rounded-2xl border-[7px] border-[#c45a88] bg-white px-4 py-2 text-center text-3xl font-extrabold text-blush">
+                Fursuit prices
+              </h2>
+              <ul className="mt-8 flex flex-col gap-6">
                 {prices.map((item, index) => (
                   <li key={item.name} className="flex items-center gap-3">
                     <div className="min-w-0 flex-1">
-                      <p className="mb-2 text-lg font-extrabold text-blush">{item.name}</p>
+                      <p className="mb-3 inline-block rounded-2xl border-[7px] border-[#c45a88] bg-white px-3 py-1 text-lg font-extrabold text-blush">
+                        {item.name}
+                      </p>
                       <div className="flex items-center gap-4">
-                        <span className="grid h-16 w-16 shrink-0 place-items-center">
+                        <span className="grid h-24 w-24 shrink-0 place-items-center">
                           <img
                             src={priceTalking ? "/talk-price.png" : "/logo.png"}
                             alt=""
                             onAnimationEnd={index === 0 ? priceSettled : undefined}
                             className={
-                              "h-16 w-16 object-contain outline-none " +
+                              "h-24 w-24 object-contain outline-none " +
                               (pricePhase === "squish"
                                 ? "bunny-squish"
                                 : pricePhase === "rise"
@@ -284,7 +288,7 @@ export function HollowbloomPage() {
                         <p className="price-bubble">{item.range}</p>
                       </div>
                     </div>
-                    <img src={item.image} alt="" className="h-auto w-36 shrink-0 outline-none sm:w-44" />
+                    <img src={item.image} alt="" className="h-auto w-28 shrink-0 outline-none sm:w-36" />
                   </li>
                 ))}
               </ul>
