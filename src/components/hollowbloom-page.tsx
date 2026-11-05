@@ -124,15 +124,16 @@ export function HollowbloomPage() {
         Skip to the top
       </a>
 
+      <img
+        src="/logo.png"
+        alt=""
+        className="fixed top-3 left-3 z-20 h-16 w-auto outline-none sm:top-4 sm:left-4 sm:h-20"
+      />
+
       <main id="top" className="mx-auto max-w-xl px-4 py-10 sm:px-5 sm:py-14">
         <div className="plaque px-5 py-10 sm:px-8 sm:py-12">
         <header className="text-center">
-          <img
-            src="/logo.png"
-            alt=""
-            className="mx-auto h-40 w-auto outline-none sm:h-48"
-          />
-          <h1 className="mt-3">
+          <h1>
             <img
               src="/wordmark.png"
               alt="Cryptid Bunny"
