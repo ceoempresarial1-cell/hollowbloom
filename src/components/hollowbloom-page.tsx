@@ -10,14 +10,14 @@ const prices = [
 const works = ["Partials", "Heads", "Paws", "Feetpaws", "Bodies", "Digitigrade", "Plantigrade"] as const;
 
 const terms = [
-  "Commissions, when they open, are for adults.",
-  "No copyrighted characters, and nothing built to look like one.",
-  "Say what the cryptid is. A front, a back, and the face is enough.",
-  "Cryptid Bunny can turn a design down. Kindness is the whole tone.",
-  "Black fur is the base. Pink, plum, yellow, and red sit on top.",
-  "Split dye, bows, doll lashes, and platform paws are the house style.",
-  "Changes after a look is locked get talked through before any work moves.",
-  "You will see the suit while it is being built, not only at the end.",
+  "Commissions are open to adults, and to minors who have a parent or guardian's permission.",
+  "A quote does not reserve a spot. A spot is held only after payment is received.",
+  "All types of fursonas and furry characters are accepted.",
+  "A special price may apply if a clear example of what you are looking for has not been made yet.",
+  "Quotes are estimates. The final price is confirmed in writing before any payment.",
+  "Split dye, bows, doll lashes, and platform paws can be included when they are agreed in the design.",
+  "Changes after a design is approved are discussed before any further work is done.",
+  "Progress is shown while the suit is being built, not only when it is finished.",
 ];
 
 const bunnyLines = ["hii <3", "hehe", "hihi!", "helloo", ":3", "teehee", "^^", "ehe"];
@@ -28,7 +28,7 @@ const cards = [
   {
     id: "terms",
     title: "Terms of service",
-    blurb: "Everything to know before you ask for a suit.",
+    blurb: "Please review these before requesting a commission.",
     image: "/logo.png",
   },
   {
@@ -194,8 +194,8 @@ export function HollowbloomPage() {
                 className="mx-auto w-full max-w-sm outline-none"
               />
             </h1>
-            <p className="mt-3 text-lg font-bold">Scary-cute cryptid fursuit maker</p>
-            <p className="mt-2 font-extrabold tracking-wide text-pink uppercase">Lookbook open</p>
+            <p className="mt-3 text-lg font-bold">Fursuit maker for fursonas and furry characters</p>
+            <p className="mt-2 font-extrabold tracking-wide text-pink uppercase">Commissions open</p>
             <button
               type="button"
               onClick={() => open("browse")}
@@ -232,9 +232,8 @@ export function HollowbloomPage() {
 
           {view === "terms" ? (
             <section className="pt-10 text-center">
-              <p className="text-lg tracking-widest text-pink">♡ ♡ ♡</p>
               <h2 className="mt-2 text-3xl font-extrabold text-blush">Terms of service</h2>
-              <p className="mt-3 text-ash">♡ please read these before you ask, cutie ♡</p>
+              <p className="mt-3 text-ash">Please read these terms before requesting a commission.</p>
               <div
                 role="img"
                 aria-label="Terms image"
@@ -243,7 +242,7 @@ export function HollowbloomPage() {
               <ul className="mt-8 flex flex-col gap-4 text-left text-ash">
                 {terms.map((point) => (
                   <li key={point} className="border-l-2 border-lilac pl-3">
-                    {point} ♡
+                    {point}
                   </li>
                 ))}
               </ul>
