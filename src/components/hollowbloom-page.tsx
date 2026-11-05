@@ -52,29 +52,52 @@ function ExampleIcon({ kind }: { kind: View }) {
 }
 
 export function HollowbloomPage() {
-  const [confused, setConfused] = useState(false);
+  const [face, setFace] = useState<"normal" | "confused" | "talk">("normal");
   const [phase, setPhase] = useState<"idle" | "wobble" | "squish" | "rise">("idle");
   const [view, setView] = useState<View>("browse");
   const revertTimer = useRef<number | null>(null);
-  const swapToConfused = useRef(true);
+  const nextFace = useRef<"normal" | "confused" | "talk">("normal");
+  const afterRise = useRef<(() => void) | null>(null);
+  const faceRef = useRef(face);
+  const phaseRef = useRef(phase);
+  faceRef.current = face;
+  phaseRef.current = phase;
 
   const lineIndex = useRef(0);
   const [line, setLine] = useState<string | null>(null);
+  const talkRef = useRef<() => void>(() => {});
+
+  function queueSquish(to: "normal" | "confused" | "talk", then?: () => void) {
+    nextFace.current = to;
+    afterRise.current = then ?? null;
+    setPhase("squish");
+  }
+
+  talkRef.current = () => {
+    if (phaseRef.current !== "idle") return;
+    const back = faceRef.current === "talk" ? "normal" : faceRef.current;
+    if (revertTimer.current) window.clearTimeout(revertTimer.current);
+    setLine(bunnyLines[lineIndex.current % bunnyLines.length]);
+    lineIndex.current += 1;
+    queueSquish("talk", () => {
+      revertTimer.current = window.setTimeout(() => {
+        setLine(null);
+        queueSquish(back, () => {
+          if (back === "confused") {
+            revertTimer.current = window.setTimeout(() => queueSquish("normal"), 3000);
+          }
+        });
+      }, 2000);
+    });
+  };
 
   useEffect(() => {
-    let hide = 0;
-    const show = () => {
-      setLine(bunnyLines[lineIndex.current % bunnyLines.length]);
-      lineIndex.current += 1;
-      window.clearTimeout(hide);
-      hide = window.setTimeout(() => setLine(null), 3200);
-    };
+    const show = () => talkRef.current();
     const first = window.setTimeout(show, 2000);
     const every = window.setInterval(show, 10000);
     return () => {
       window.clearTimeout(first);
       window.clearInterval(every);
-      window.clearTimeout(hide);
     };
   }, []);
 
@@ -90,9 +113,13 @@ export function HollowbloomPage() {
   }
 
   function pokeBunny() {
-    if (phase !== "idle" || confused) return;
-    swapToConfused.current = true;
+    if (phase !== "idle" || face !== "normal") return;
+    if (revertTimer.current) window.clearTimeout(revertTimer.current);
     setPhase("wobble");
+    nextFace.current = "confused";
+    afterRise.current = () => {
+      revertTimer.current = window.setTimeout(() => queueSquish("normal"), 3000);
+    };
   }
 
   function bunnySettled(event: AnimationEvent<HTMLButtonElement>) {
@@ -102,19 +129,15 @@ export function HollowbloomPage() {
       return;
     }
     if (event.animationName === "bunny-squish") {
-      setConfused(swapToConfused.current);
+      setFace(nextFace.current);
       setPhase("rise");
       return;
     }
     if (event.animationName === "bunny-rise") {
       setPhase("idle");
-      if (swapToConfused.current) {
-        if (revertTimer.current) window.clearTimeout(revertTimer.current);
-        revertTimer.current = window.setTimeout(() => {
-          swapToConfused.current = false;
-          setPhase("squish");
-        }, 3000);
-      }
+      const then = afterRise.current;
+      afterRise.current = null;
+      then?.();
     }
   }
 
@@ -135,7 +158,7 @@ export function HollowbloomPage() {
         ) : null}
         <button
           type="button"
-          aria-label={confused ? "Confused cryptid bunny" : "Cryptid bunny"}
+          aria-label={face === "talk" ? "Talking cryptid bunny" : face === "confused" ? "Confused cryptid bunny" : "Cryptid bunny"}
           onClick={pokeBunny}
           onAnimationEnd={bunnySettled}
           className={
@@ -144,7 +167,7 @@ export function HollowbloomPage() {
           }
         >
           <img
-            src={confused ? "/confused.png" : "/logo.png"}
+            src={face === "talk" ? "/talk.png" : face === "confused" ? "/confused.png" : "/logo.png"}
             alt=""
             className="h-20 w-auto outline-none sm:h-24"
           />
