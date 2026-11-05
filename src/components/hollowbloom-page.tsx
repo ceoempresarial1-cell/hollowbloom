@@ -32,10 +32,7 @@ const cards = [
     image: "/logo.png",
   },
   {
-    id: "prices",
-    title: "Fursuit prices",
-    blurb: "Mini partial, full partial, head, and fullsuit.",
-    image: "/logo.png",
+    image: "/confused-v2.png",
   },
   {
     id: "gallery",
@@ -177,7 +174,7 @@ export function HollowbloomPage() {
           }
         >
           <img
-            src={face === "talk" ? "/talk.png" : face === "confused" ? "/confused.png" : "/logo.png"}
+            src={face === "talk" ? "/talk.png" : face === "confused" ? "/confused-v2.png" : "/logo.png"}
             alt=""
             className="h-20 w-auto outline-none sm:h-24"
           />
