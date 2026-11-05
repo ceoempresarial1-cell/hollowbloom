@@ -210,6 +210,42 @@
   transform-origin: center bottom;
 }
 
+@keyframes icon-bounce {
+  0%,
+  72%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  28% {
+    transform: translateY(-12px) scale(0.98, 1.03);
+  }
+  48% {
+    transform: translateY(-12px) scale(0.98, 1.03);
+  }
+  64% {
+    transform: translateY(5px) scale(1.06, 0.9);
+  }
+}
+
+.icon-bounce {
+  animation: icon-bounce 1.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.icon-bounce.delay-1 {
+  animation-delay: 0.3s;
+}
+
+.icon-bounce.delay-2 {
+  animation-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-bounce {
+    animation: none;
+  }
+}
+
 .price-bubble::after {
   content: "";
   position: absolute;

@@ -303,7 +303,7 @@ export function HollowbloomPage() {
                       {text.more}
                     </button>
                   </div>
-                  <img src={card.image} alt="" className="h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52" />
+                  <img src={card.image} alt="" className={"icon-bounce h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52 " + (card.id === "prices" ? "delay-1" : card.id === "gallery" ? "delay-2" : "")} />
                 </article>
               ))}
             </div>
