@@ -265,7 +265,7 @@ export function HollowbloomPage() {
                   <li key={item.name} className="flex items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="mb-2 text-lg font-extrabold text-blush">{item.name}</p>
-                      <div className="flex items-end">
+                      <div className="flex items-center gap-2">
                         <img
                           src={priceTalking ? "/talk-price.png" : "/logo.png"}
                           alt=""
@@ -282,7 +282,7 @@ export function HollowbloomPage() {
                         <p className="price-bubble">{item.range}</p>
                       </div>
                     </div>
-                    <img src={item.image} alt="" className="h-auto w-24 shrink-0 outline-none sm:w-28" />
+                    <img src={item.image} alt="" className="h-auto w-36 shrink-0 outline-none sm:w-44" />
                   </li>
                 ))}
               </ul>
