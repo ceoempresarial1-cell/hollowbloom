@@ -20,6 +20,8 @@ const terms = [
   "You will see the suit while it is being built, not only at the end.",
 ];
 
+const bunnyLines = ["hii <3", "hehe", "hihi!", "helloo", ":3", "teehee", "^^", "ehe"];
+
 type View = "browse" | "terms" | "prices" | "gallery";
 
 function ExampleIcon({ kind }: { kind: View }) {
@@ -55,6 +57,26 @@ export function HollowbloomPage() {
   const [view, setView] = useState<View>("browse");
   const revertTimer = useRef<number | null>(null);
   const swapToConfused = useRef(true);
+
+  const lineIndex = useRef(0);
+  const [line, setLine] = useState<string | null>(null);
+
+  useEffect(() => {
+    let hide = 0;
+    const show = () => {
+      setLine(bunnyLines[lineIndex.current % bunnyLines.length]);
+      lineIndex.current += 1;
+      window.clearTimeout(hide);
+      hide = window.setTimeout(() => setLine(null), 3200);
+    };
+    const first = window.setTimeout(show, 2000);
+    const every = window.setInterval(show, 10000);
+    return () => {
+      window.clearTimeout(first);
+      window.clearInterval(every);
+      window.clearTimeout(hide);
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -105,22 +127,29 @@ export function HollowbloomPage() {
         Skip to the top
       </a>
 
-      <button
-        type="button"
-        aria-label={confused ? "Confused cryptid bunny" : "Cryptid bunny"}
-        onClick={pokeBunny}
-        onAnimationEnd={bunnySettled}
-        className={
-          "fixed right-3 bottom-3 z-20 border-0 bg-transparent p-0 sm:right-4 sm:bottom-4 " +
-          (phase === "wobble" ? "bunny-shake" : phase === "squish" ? "bunny-squish" : phase === "rise" ? "bunny-rise" : "")
-        }
-      >
-        <img
-          src={confused ? "/confused.png" : "/logo.png"}
-          alt=""
-          className="h-20 w-auto outline-none sm:h-24"
-        />
-      </button>
+      <div className="fixed right-3 bottom-3 z-20 sm:right-4 sm:bottom-4">
+        {line ? (
+          <p className="bunny-bubble" aria-live="polite">
+            {line}
+          </p>
+        ) : null}
+        <button
+          type="button"
+          aria-label={confused ? "Confused cryptid bunny" : "Cryptid bunny"}
+          onClick={pokeBunny}
+          onAnimationEnd={bunnySettled}
+          className={
+            "border-0 bg-transparent p-0 " +
+            (phase === "wobble" ? "bunny-shake" : phase === "squish" ? "bunny-squish" : phase === "rise" ? "bunny-rise" : "")
+          }
+        >
+          <img
+            src={confused ? "/confused.png" : "/logo.png"}
+            alt=""
+            className="h-20 w-auto outline-none sm:h-24"
+          />
+        </button>
+      </div>
 
       <main id="top" className="mx-auto max-w-xl px-4 py-10 sm:px-5 sm:py-14">
         <div className="plaque px-5 py-10 sm:px-8 sm:py-12">
