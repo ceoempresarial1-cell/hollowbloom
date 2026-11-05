@@ -80,6 +80,41 @@
   line-height: 0.95;
 }
 
+.plaque {
+  background: #ffd4e8;
+  border: 3px solid #7a2e68;
+  border-radius: 2.4rem;
+  color: #5a2148;
+}
+
+.plaque :is(.text-blush, .hover\:text-blush:hover) {
+  color: #4a1840;
+}
+
+.plaque .text-ash {
+  color: #6d3058;
+}
+
+.plaque .text-pink {
+  color: #9a1860;
+}
+
+.plaque .text-mint {
+  color: #8a4518;
+}
+
+.plaque .text-lilac {
+  color: #6b2454;
+}
+
+.plaque .text-sky {
+  color: #b42323;
+}
+
+.plaque [class*="border-pink"] {
+  border-color: color-mix(in srgb, #7a2e68 40%, transparent);
+}
+
 .sticker {
   background: var(--color-panel);
   border-radius: var(--radius-card);

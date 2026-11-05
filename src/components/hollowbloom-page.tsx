@@ -124,25 +124,26 @@ export function HollowbloomPage() {
         Skip to the top
       </a>
 
-      <main id="top" className="mx-auto max-w-xl px-5 pt-16 pb-24">
+      <main id="top" className="mx-auto max-w-xl px-4 py-10 sm:px-5 sm:py-14">
+        <div className="plaque px-5 py-10 sm:px-8 sm:py-12">
         <header className="text-center">
           <img
             src="/logo.png"
             alt=""
-            className="mx-auto h-56 w-auto outline-none"
+            className="mx-auto h-40 w-auto outline-none sm:h-48"
           />
-          <h1 className="mt-4">
+          <h1 className="mt-3">
             <img
               src="/wordmark.png"
               alt="Cryptid Bunny"
-              className="mx-auto w-full max-w-md outline-none"
+              className="mx-auto w-full max-w-sm outline-none"
             />
           </h1>
-          <p className="mt-4 text-lg text-blush">Scary-cute cryptid fursuit maker</p>
-          <p className="mt-3 font-extrabold tracking-wide text-mint uppercase">Lookbook open</p>
+          <p className="mt-3 text-lg font-bold">Scary-cute cryptid fursuit maker</p>
+          <p className="mt-2 font-extrabold tracking-wide text-pink uppercase">Lookbook open</p>
           <a
             href="#gallery"
-            className="mt-6 inline-flex min-h-11 items-center justify-center px-4 text-lg font-extrabold tracking-widest text-pink uppercase"
+            className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
           >
             Browse
           </a>
@@ -267,8 +268,8 @@ export function HollowbloomPage() {
                         className={
                           "min-h-11 rounded-2xl border px-4 py-3 text-left " +
                           (on
-                            ? "border-pink bg-pink text-ink"
-                            : "border-pink/40 bg-panel text-blush hover:border-lilac")
+                            ? "border-[#7a2e68] bg-pink text-ink"
+                            : "border-[#7a2e68]/40 bg-white/45 text-[#4a1840]")
                         }
                       >
                         <span className="block font-extrabold">{option.name}</span>
@@ -329,6 +330,7 @@ export function HollowbloomPage() {
             </li>
           </ul>
         </section>
+        </div>
       </main>
     </div>
   );
