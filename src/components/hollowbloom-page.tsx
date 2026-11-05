@@ -115,6 +115,20 @@ export function HollowbloomPage() {
     setWear((current) => ({ ...current, [layer]: id }));
   }
 
+  const [confused, setConfused] = useState(false);
+  const [shaking, setShaking] = useState(false);
+
+  function pokeBunny() {
+    if (shaking) return;
+    setShaking(true);
+  }
+
+  function bunnySettled() {
+    if (!shaking) return;
+    setShaking(false);
+    setConfused(true);
+  }
+
   return (
     <div className="room min-h-screen">
       <a
@@ -124,11 +138,22 @@ export function HollowbloomPage() {
         Skip to the top
       </a>
 
-      <img
-        src="/logo.png"
-        alt=""
-        className="fixed top-3 left-3 z-20 h-16 w-auto outline-none sm:top-4 sm:left-4 sm:h-20"
-      />
+      <button
+        type="button"
+        aria-label={confused ? "Confused cryptid bunny" : "Cryptid bunny"}
+        onClick={pokeBunny}
+        onAnimationEnd={bunnySettled}
+        className={
+          "fixed right-3 bottom-3 z-20 border-0 bg-transparent p-0 sm:right-4 sm:bottom-4 " +
+          (shaking ? "bunny-shake" : "")
+        }
+      >
+        <img
+          src={confused ? "/confused.png" : "/logo.png"}
+          alt=""
+          className="h-20 w-auto outline-none sm:h-24"
+        />
+      </button>
 
       <main id="top" className="mx-auto max-w-xl px-4 py-10 sm:px-5 sm:py-14">
         <div className="plaque px-5 py-10 sm:px-8 sm:py-12">
