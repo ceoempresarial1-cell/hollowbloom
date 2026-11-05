@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { cryptids, findCryptid, piece, repo, wardrobe, type Wear } from "@/data/catalog";
 
 const jumps = [
@@ -117,6 +117,13 @@ export function HollowbloomPage() {
 
   const [confused, setConfused] = useState(false);
   const [shaking, setShaking] = useState(false);
+  const revertTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (revertTimer.current) window.clearTimeout(revertTimer.current);
+    };
+  }, []);
 
   function pokeBunny() {
     if (shaking) return;
@@ -127,6 +134,8 @@ export function HollowbloomPage() {
     if (!shaking) return;
     setShaking(false);
     setConfused(true);
+    if (revertTimer.current) window.clearTimeout(revertTimer.current);
+    revertTimer.current = window.setTimeout(() => setConfused(false), 3000);
   }
 
   return (
