@@ -24,32 +24,26 @@ const bunnyLines = ["hii <3", "hehe", "hihi!", "helloo", ":3", "teehee", "^^", "
 
 type View = "browse" | "terms" | "prices" | "gallery";
 
-function ExampleIcon({ kind }: { kind: View }) {
-  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  return (
-    <svg viewBox="0 0 48 48" className="h-8 w-8" aria-hidden="true">
-      {kind === "terms" ? (
-        <path
-          {...common}
-          d="M24 40s-13-8.2-13-17.2C11 17.2 14.6 14 18.6 14c2.4 0 4.4 1.2 5.4 3 1-1.8 3-3 5.4-3 4 0 7.6 3.2 7.6 8.8C37 31.8 24 40 24 40z"
-        />
-      ) : null}
-      {kind === "prices" ? (
-        <>
-          <rect {...common} x="10" y="14" width="28" height="20" rx="3" />
-          <path {...common} d="M16 22h16M16 28h10" />
-        </>
-      ) : null}
-      {kind === "gallery" ? (
-        <>
-          <rect {...common} x="8" y="12" width="32" height="24" rx="3" />
-          <path {...common} d="M8 30l8-7 6 5 5-4 9 8" />
-          <circle {...common} cx="18" cy="19" r="2" />
-        </>
-      ) : null}
-    </svg>
-  );
-}
+const cards = [
+  {
+    id: "terms",
+    title: "Terms of service",
+    blurb: "Everything to know before you ask for a suit.",
+    image: "/logo.png",
+  },
+  {
+    id: "prices",
+    title: "Fursuit prices",
+    blurb: "Mini partial, full partial, head, and fullsuit.",
+    image: "/prices/fullsuit-v2.png",
+  },
+  {
+    id: "gallery",
+    title: "Gallery",
+    blurb: "Partials, heads, paws, and the rest of the work.",
+    image: "/talk.png",
+  },
+] as const;
 
 export function HollowbloomPage() {
   const [face, setFace] = useState<"normal" | "confused" | "talk">("normal");
@@ -198,27 +192,24 @@ export function HollowbloomPage() {
           <div className="mt-10 border-t border-pink/40" />
 
           {view === "browse" ? (
-            <div id="browse">
-              {(
-                [
-                  ["terms", "Terms of service"],
-                  ["prices", "Fursuit prices"],
-                  ["gallery", "Gallery"],
-                ] as const
-              ).map(([id, title]) => (
-                <div key={id} className="flex items-center gap-4 border-b border-pink/40 py-5 last:border-b-0">
-                  <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl border-2 border-[#c45a88] bg-white/40 text-[#c45a88]">
-                    <ExampleIcon kind={id} />
+            <div id="browse" className="flex flex-col">
+              {cards.map((card) => (
+                <article key={card.id} className="flex items-center gap-4 border-b border-pink/40 py-8 last:border-b-0">
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-sm font-extrabold tracking-widest text-blush uppercase">
+                      ☆ {card.title} ☆
+                    </h2>
+                    <p className="mt-3 text-ash">{card.blurb}</p>
+                    <button
+                      type="button"
+                      onClick={() => open(card.id)}
+                      className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-xs font-extrabold tracking-widest text-[#6b2454] uppercase"
+                    >
+                      See more
+                    </button>
                   </div>
-                  <h2 className="flex-1 text-left text-xl font-extrabold text-blush">{title}</h2>
-                  <button
-                    type="button"
-                    onClick={() => open(id)}
-                    className="inline-flex min-h-11 items-center font-extrabold tracking-widest text-pink uppercase"
-                  >
-                    See more
-                  </button>
-                </div>
+                  <img src={card.image} alt="" className="h-32 w-28 shrink-0 object-contain outline-none sm:h-40 sm:w-36" />
+                </article>
               ))}
             </div>
           ) : null}
