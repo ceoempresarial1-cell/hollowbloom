@@ -185,12 +185,12 @@ export function HollowbloomPage() {
                 <h2 className="text-3xl font-extrabold text-blush">Fursuit prices</h2>
               </div>
               <ul className="mt-8 flex flex-col gap-3">
-                {works.map((work) => (
+                {["Mini partial", "Full partial", "Head", "Fullsuit"].map((item) => (
                   <li
-                    key={work}
+                    key={item}
                     className="flex items-center justify-between border-b border-pink/40 py-3 text-blush"
                   >
-                    <span className="font-extrabold">{work}</span>
+                    <span className="font-extrabold">{item}</span>
                     <span className="text-ash">Soon</span>
                   </li>
                 ))}
