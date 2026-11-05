@@ -9,7 +9,7 @@
   --color-lilac: #c2185b;
   --color-mint: #ffcc4d;
   --color-sky: #ff2a2a;
-  --font-display: "Permanent Marker", "Trebuchet MS", cursive;
+  --font-display: "Pacifico", "Trebuchet MS", cursive;
   --font-sans: "Press Start 2P", monospace;
   --radius-card: 1.75rem;
 }
@@ -238,7 +238,7 @@
 }
 
 .plaque :is(h1, h2, h3, .is-title) {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Pacifico", cursive;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.15;
