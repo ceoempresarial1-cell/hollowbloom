@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 
 const prices = [
   { name: "Fullsuit", image: "/prices/fullsuit.png" },
-  { name: "Full partial", image: "/prices/full-partial.png" },
-  { name: "Mini partial", image: "/prices/mini-partial.png" },
-  { name: "Head", image: "/prices/head.png" },
+  { name: "Full partial", image: "/prices/full-partial.webp" },
+  { name: "Mini partial", image: "/prices/mini-partial.webp" },
+  { name: "Head", image: "/prices/head.webp" },
 ] as const;
 
 const works = ["Partials", "Heads", "Paws", "Feetpaws", "Bodies", "Digitigrade", "Plantigrade"] as const;
@@ -187,8 +187,8 @@ export function HollowbloomPage() {
               <ul className="mt-8 flex flex-col gap-4">
                 {prices.map((item) => (
                   <li key={item.name} className="flex items-center gap-4">
-                    <div className="grid h-40 w-40 shrink-0 place-items-center rounded-2xl border-[7px] border-[#c45a88] bg-white p-2">
-                      <img src={item.image} alt="" className="h-full w-full object-contain outline-none" />
+                    <div className="shrink-0 rounded-2xl border-[7px] border-[#c45a88] bg-white p-2">
+                      <img src={item.image} alt="" className="h-auto w-44 outline-none sm:w-52" />
                     </div>
                     <span className="text-lg font-extrabold text-blush">{item.name}</span>
                   </li>
