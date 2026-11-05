@@ -1,93 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cryptids, findCryptid, piece, repo, wardrobe, type Wear } from "@/data/catalog";
 
-const jumps = [
-  {
-    href: "#rules",
-    title: "House rules",
-    blurb: "What to know before you ask for a cryptid.",
-    action: "Read",
-  },
-  {
-    href: "#faq",
-    title: "FAQ",
-    blurb: "How a suit gets from the closet to you.",
-    action: "Read",
-  },
-  {
-    href: "#prices",
-    title: "Prices",
-    blurb: "Not posted yet. The lookbook is the offer for now.",
-    action: "Read",
-  },
-  {
-    href: "#gallery",
-    title: "Gallery",
-    blurb: "Meet the cryptids. Newest mood, oldest teeth.",
-    action: "Browse",
-  },
-  {
-    href: "#doll",
-    title: "The doll",
-    blurb: "Layer a sweater, a skirt, and a pair of boots.",
-    action: "Dress",
-  },
-  {
-    href: "#care",
-    title: "Fursuit care",
-    blurb: "How to keep the fur soft and a little mean.",
-    action: "Read",
-  },
-  {
-    href: "#den",
-    title: "The den",
-    blurb: "The room they stand in when nobody is wearing them.",
-    action: "See",
-  },
-];
+const works = ["Partials", "Heads", "Paws", "Feetpaws", "Bodies", "Digitigrade", "Plantigrade"] as const;
 
-const rules = [
-  {
-    title: "General",
-    points: [
-      "Commissions, when they open, are for adults.",
-      "No copyrighted characters, and nothing built to look like one.",
-      "Say what the cryptid is. A reference with a front, a back, and the face is enough.",
-      "Cryptid Bunny can turn a design down. Kindness is the whole tone.",
-    ],
-  },
-  {
-    title: "Making",
-    points: [
-      "Black fur is the base. Pink, plum, yellow, and red sit on top.",
-      "Split dye, bows, doll lashes, and platform paws are the house style.",
-      "Changes after a look is locked get talked through before any work moves.",
-      "You will see the suit while it is being built, not only at the end.",
-    ],
-  },
-];
-
-const faqs = [
-  {
-    q: "How do I get a suit from here?",
-    a: "Browse the gallery, dress a doll so the look is clear, then wait. Applications are not open on this page yet.",
-  },
-  {
-    q: "When do applications open?",
-    a: "When a batch of cryptids is finished. This page is the place that will say so.",
-  },
-  {
-    q: "How much does a suit cost?",
-    a: "Prices are not posted yet. Do not guess from the lookbook.",
-  },
-  {
-    q: "Which creatures can you make?",
-    a: "The six in the gallery are the house set: moth, hare, water-horse, spade, fox, and owl. Other furry cryptids can be talked through later. Nothing borrowed from a studio that owns the character.",
-  },
-  {
-    q: "Can I wear it hard?",
-    a: "Yes. Care is brushing, cool air, and a wash when it needs one. See Fursuit care.",
-  },
+const terms = [
+  "Commissions, when they open, are for adults.",
+  "No copyrighted characters, and nothing built to look like one.",
+  "Say what the cryptid is. A front, a back, and the face is enough.",
+  "Cryptid Bunny can turn a design down. Kindness is the whole tone.",
+  "Black fur is the base. Pink, plum, yellow, and red sit on top.",
+  "Split dye, bows, doll lashes, and platform paws are the house style.",
+  "Changes after a look is locked get talked through before any work moves.",
+  "You will see the suit while it is being built, not only at the end.",
 ];
 
 export function HollowbloomPage() {
@@ -105,18 +29,13 @@ export function HollowbloomPage() {
     };
   }, [wear]);
 
-  function choose(id: string) {
-    const next = findCryptid(id);
-    setCryptidId(next.id);
-    setWear(next.wear);
-  }
-
   function setLayer(layer: keyof Wear, id: string) {
     setWear((current) => ({ ...current, [layer]: id }));
   }
 
   const [confused, setConfused] = useState(false);
   const [shaking, setShaking] = useState(false);
+  const [view, setView] = useState<"browse" | "terms">("browse");
   const revertTimer = useRef<number | null>(null);
 
   useEffect(() => {
@@ -124,6 +43,16 @@ export function HollowbloomPage() {
       if (revertTimer.current) window.clearTimeout(revertTimer.current);
     };
   }, []);
+
+  function openTerms() {
+    setView("terms");
+    document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function backToBrowse() {
+    setView("browse");
+    document.getElementById("browse")?.scrollIntoView({ behavior: "smooth" });
+  }
 
   function pokeBunny() {
     if (shaking) return;
@@ -177,7 +106,8 @@ export function HollowbloomPage() {
           <p className="mt-3 text-lg font-bold">Scary-cute cryptid fursuit maker</p>
           <p className="mt-2 font-extrabold tracking-wide text-pink uppercase">Lookbook open</p>
           <a
-            href="#gallery"
+            href="#browse"
+            onClick={() => setView("browse")}
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
           >
             Browse
@@ -200,80 +130,77 @@ export function HollowbloomPage() {
 
         <div className="mt-10 border-t border-pink/40" />
 
-        <ul>
-          {jumps.map((item) => (
-            <li key={item.href} className="border-b border-pink/40 py-8 text-center">
-              <p className="text-2xl font-extrabold text-blush">{item.title}</p>
-              <p className="mt-2 text-ash">{item.blurb}</p>
-              <a
-                href={item.href}
-                className="mt-2 inline-flex min-h-11 items-center font-extrabold tracking-widest text-pink uppercase"
+        {view === "terms" ? (
+          <section id="terms" className="pt-10 text-center">
+            <p className="text-lg tracking-widest text-pink">♡ ♡ ♡</p>
+            <h2 className="mt-2 text-3xl font-extrabold text-blush">Terms of service</h2>
+            <p className="mt-3 text-ash">♡ please read these before you ask, cutie ♡</p>
+            <ul className="mt-8 flex flex-col gap-4 text-left text-ash">
+              {terms.map((point) => (
+                <li key={point} className="border-l-2 border-lilac pl-3">
+                  {point} ♡
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={backToBrowse}
+              className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
+            >
+              Back
+            </button>
+          </section>
+        ) : (
+          <div id="browse">
+            <section className="border-b border-pink/40 py-8 text-center">
+              <p className="text-lg tracking-widest text-pink">♡ ♡ ♡</p>
+              <h2 className="mt-2 text-2xl font-extrabold text-blush">Terms of service</h2>
+              <p className="mt-2 text-ash">♡ cutecore house rules, read with hearts ♡</p>
+              <div
+                role="img"
+                aria-label="Terms image"
+                className="mx-auto mt-5 aspect-[4/3] w-full max-w-xs rounded-3xl border-2 border-dashed border-[#c45a88] bg-white/35"
+              />
+              <button
+                type="button"
+                onClick={openTerms}
+                className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
               >
-                {item.action}
-              </a>
-            </li>
-          ))}
-        </ul>
+                See more
+              </button>
+            </section>
 
-        <section id="rules" className="scroll-mt-8 pt-16">
-          <h2 className="text-center text-3xl font-extrabold text-blush">House rules</h2>
-          <p className="mt-3 text-center text-ash">Read this before you ask for a suit.</p>
-          <div className="mt-8 flex flex-col gap-8">
-            {rules.map((group) => (
-              <div key={group.title}>
-                <h3 className="text-sm font-extrabold tracking-widest text-pink uppercase">{group.title}</h3>
-                <ul className="mt-3 flex flex-col gap-2 text-ash">
-                  {group.points.map((point) => (
-                    <li key={point} className="border-l-2 border-lilac pl-3">
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <section id="prices" className="flex items-center gap-4 border-b border-pink/40 py-8">
+              <div
+                role="img"
+                aria-label="Prices image"
+                className="h-24 w-24 shrink-0 rounded-2xl border-2 border-dashed border-[#c45a88] bg-white/35"
+              />
+              <h2 className="text-2xl font-extrabold text-blush">Fursuit prices</h2>
+            </section>
+
+            <section id="gallery" className="pt-8">
+              {works.map((work) => (
+                <div key={work} className="mb-8">
+                  <h2 className="mb-3 text-center text-sm font-extrabold tracking-widest text-pink uppercase">
+                    {work}
+                  </h2>
+                  <ul className="grid grid-cols-2 gap-3">
+                    {[0, 1].map((slot) => (
+                      <li key={slot}>
+                        <div
+                          role="img"
+                          aria-label={work}
+                          className="aspect-square rounded-2xl border-2 border-dashed border-[#c45a88] bg-white/35"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </section>
           </div>
-        </section>
-
-        <section id="faq" className="scroll-mt-8 pt-16">
-          <h2 className="text-center text-3xl font-extrabold text-blush">FAQ</h2>
-          <p className="mt-3 text-center text-ash">Short answers. The long ones live in the rules.</p>
-          <dl className="mt-8 flex flex-col gap-6">
-            {faqs.map((item) => (
-              <div key={item.q}>
-                <dt className="font-extrabold text-blush">Q: {item.q}</dt>
-                <dd className="mt-1 text-ash">A: {item.a}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        <section id="prices" className="scroll-mt-8 pt-16 text-center">
-          <h2 className="text-3xl font-extrabold text-blush">Prices</h2>
-          <p className="mt-3 text-ash">
-            Not posted yet. Nothing on this page is for sale, and no number here is a quote.
-          </p>
-        </section>
-
-        <section id="gallery" className="scroll-mt-8 pt-16">
-          <h2 className="text-center text-3xl font-extrabold text-blush">Gallery</h2>
-          <p className="mt-3 text-center text-ash">Meet the family. Pick one, then dress it.</p>
-          <ul className="mt-8 flex flex-col gap-8">
-            {cryptids.map((item) => (
-              <li key={item.id} className="border-b border-pink/40 pb-8 text-center last:border-b-0">
-                <h3 className="text-xl font-extrabold text-blush">{item.name}</h3>
-                <p className="text-sm font-bold tracking-widest text-mint uppercase">{item.epithet}</p>
-                <p className="mt-1 text-ash">{item.blurb}</p>
-                <a
-                  href="#doll"
-                  onClick={() => choose(item.id)}
-                  className="mt-1 inline-flex min-h-11 items-center font-extrabold tracking-widest text-pink uppercase"
-                >
-                  Dress
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        )}
 
         <section id="doll" className="scroll-mt-8 pt-16">
           <h2 className="text-center text-3xl font-extrabold text-blush">The doll</h2>
