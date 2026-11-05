@@ -32,6 +32,9 @@ const cards = [
     image: "/logo.png",
   },
   {
+    id: "prices",
+    title: "Fursuit prices",
+    blurb: "Mini partial, full partial, head, and fullsuit.",
     image: "/confused-v2.png",
   },
   {
