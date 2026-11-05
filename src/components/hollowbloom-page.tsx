@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type AnimationEvent } from "react";
 
 const prices = [
-  { name: { en: "Fullsuit", es: "Fullsuit" }, image: "/prices/fullsuit-v2.png", range: { en: "800 to 1k+", es: "800 a 1k+" } },
-  { name: { en: "Full partial", es: "Full partial" }, image: "/prices/full-partial.webp", range: { en: "300 to 450", es: "300 a 450" } },
-  { name: { en: "Mini partial", es: "Mini partial" }, image: "/prices/mini-partial.webp", range: { en: "250 to 300", es: "250 a 300" } },
-  { name: { en: "Head", es: "Cabeza" }, image: "/prices/head.webp", range: { en: "150 to 250", es: "150 a 250" } },
+  { name: { en: "Fullsuit", es: "Fullsuit" }, image: "/prices/fullsuit-v2.png", range: { en: "$800 to $1k+", es: "$800 a $1k+" } },
+  { name: { en: "Full partial", es: "Full partial" }, image: "/prices/full-partial.webp", range: { en: "$300 to $450", es: "$300 a $450" } },
+  { name: { en: "Mini partial", es: "Mini partial" }, image: "/prices/mini-partial.webp", range: { en: "$250 to $300", es: "$250 a $300" } },
+  { name: { en: "Head", es: "Cabeza" }, image: "/prices/head.webp", range: { en: "$150 to $250", es: "$150 a $250" } },
 ] as const;
 
 const works = [
