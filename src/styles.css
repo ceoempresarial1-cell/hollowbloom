@@ -159,7 +159,7 @@
   margin: 0;
   padding: 0.55rem 0.6rem 0.45rem;
   border: 3px solid #e56aa8;
-  border-radius: 0;
+  border-radius: 1rem;
   background: #fff;
   color: #d44890;
   font-family: "Press Start 2P", monospace;
@@ -226,7 +226,7 @@
 .plaque {
   background: rgb(255 212 232 / 62%);
   border: 7px solid #e56aa8;
-  border-radius: 0;
+  border-radius: 2.5rem;
   box-shadow: 8px 8px 0 #e56aa8;
   color: #c43b86;
   font-family: "Press Start 2P", monospace;
@@ -254,7 +254,6 @@
 }
 
 .plaque :is(button, h2, .is-title) {
-  border-radius: 0;
   box-shadow: 4px 4px 0 #e56aa8;
 }
 
