@@ -193,7 +193,7 @@ export function HollowbloomPage() {
                 className="mx-auto w-full max-w-sm outline-none"
               />
             </h1>
-            <p className="mt-3 text-lg font-bold">Fursuit maker for fursonas and furry characters</p>
+            <p className="mt-3 text-lg font-bold">Beginner fursuit maker ♡</p>
             <p className="mt-2 font-extrabold tracking-wide text-pink uppercase">Commissions open</p>
             <button
               type="button"
