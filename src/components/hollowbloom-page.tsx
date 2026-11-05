@@ -310,7 +310,14 @@ export function HollowbloomPage() {
                     src={browseFaces[browseStep[index] % browseFaces.length]}
                     alt=""
                     onAnimationIteration={() =>
-                      setBrowseStep((steps) => steps.map((step, i) => (i === index ? step + 1 : step)))
+                      setBrowseStep((steps) => {
+                        const next = steps.slice();
+                        const other = (index + 1) % next.length;
+                        const held = next[index];
+                        next[index] = next[other];
+                        next[other] = held;
+                        return next;
+                      })
                     }
                     className={"icon-bounce h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52 " + (card.id === "prices" ? "delay-1" : card.id === "gallery" ? "delay-2" : "")}
                   />

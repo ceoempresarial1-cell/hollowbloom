@@ -256,11 +256,11 @@
 }
 
 .icon-bounce.delay-1 {
-  animation-delay: 0.16s;
+  animation-delay: 0.45s;
 }
 
 .icon-bounce.delay-2 {
-  animation-delay: 0.32s;
+  animation-delay: 0.9s;
 }
 
 @media (prefers-reduced-motion: reduce) {
