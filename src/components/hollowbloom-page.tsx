@@ -268,11 +268,11 @@ export function HollowbloomPage() {
                       <div className="flex items-center gap-4">
                         <span className="grid h-16 w-16 shrink-0 place-items-center">
                           <img
-                            src={priceTalking ? "/talk-price.png" : "/talk-small.png"}
+                            src={priceTalking ? "/talk-price.png" : "/logo.png"}
                             alt=""
                             onAnimationEnd={index === 0 ? priceSettled : undefined}
                             className={
-                              "max-h-16 max-w-16 object-contain outline-none " +
+                              "h-16 w-16 object-contain outline-none " +
                               (pricePhase === "squish"
                                 ? "bunny-squish"
                                 : pricePhase === "rise"
