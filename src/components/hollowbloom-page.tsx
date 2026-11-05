@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
+const prices = [
+  { name: "Fullsuit", image: "/prices/fullsuit.png" },
+  { name: "Full partial", image: "/prices/full-partial.png" },
+  { name: "Mini partial", image: "/prices/mini-partial.png" },
+  { name: "Head", image: "/prices/head.png" },
+] as const;
+
 const works = ["Partials", "Heads", "Paws", "Feetpaws", "Bodies", "Digitigrade", "Plantigrade"] as const;
 
 const terms = [
@@ -176,22 +183,14 @@ export function HollowbloomPage() {
 
           {view === "prices" ? (
             <section className="pt-10">
-              <div className="flex items-center gap-4">
-                <div
-                  role="img"
-                  aria-label="Prices image"
-                  className="h-24 w-24 shrink-0 rounded-2xl border-2 border-dashed border-[#c45a88] bg-white/35"
-                />
-                <h2 className="text-3xl font-extrabold text-blush">Fursuit prices</h2>
-              </div>
-              <ul className="mt-8 flex flex-col gap-3">
-                {["Mini partial", "Full partial", "Head", "Fullsuit"].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center justify-between border-b border-pink/40 py-3 text-blush"
-                  >
-                    <span className="font-extrabold">{item}</span>
-                    <span className="text-ash">Soon</span>
+              <h2 className="text-center text-3xl font-extrabold text-blush">Fursuit prices</h2>
+              <ul className="mt-8 flex flex-col gap-4">
+                {prices.map((item) => (
+                  <li key={item.name} className="flex items-center gap-4">
+                    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border-[7px] border-[#c45a88] bg-white">
+                      <img src={item.image} alt="" className="h-14 w-14 object-contain outline-none" />
+                    </div>
+                    <span className="text-lg font-extrabold text-blush">{item.name}</span>
                   </li>
                 ))}
               </ul>
