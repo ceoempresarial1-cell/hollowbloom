@@ -59,6 +59,8 @@ export function HollowbloomPage() {
 
   const lineIndex = useRef(0);
   const [line, setLine] = useState<string | null>(null);
+  const [priceTalking, setPriceTalking] = useState(false);
+  const [pricePhase, setPricePhase] = useState<"idle" | "squish" | "rise">("idle");
   const talkRef = useRef<() => void>(() => {});
 
   function queueSquish(to: "normal" | "confused" | "talk", then?: () => void) {
@@ -96,10 +98,24 @@ export function HollowbloomPage() {
   }, []);
 
   useEffect(() => {
+    const id = window.setInterval(() => {
+      setPricePhase((current) => (current === "idle" ? "squish" : current));
+    }, 2000);
     return () => {
+      window.clearInterval(id);
       if (revertTimer.current) window.clearTimeout(revertTimer.current);
     };
   }, []);
+
+  function priceSettled(event: AnimationEvent<HTMLImageElement>) {
+    if (event.target !== event.currentTarget) return;
+    if (event.animationName === "bunny-squish") {
+      setPriceTalking((talking) => !talking);
+      setPricePhase("rise");
+      return;
+    }
+    if (event.animationName === "bunny-rise") setPricePhase("idle");
+  }
 
   function open(next: View) {
     setView(next);
@@ -245,13 +261,28 @@ export function HollowbloomPage() {
             <section className="pt-10">
               <h2 className="text-center text-3xl font-extrabold text-blush">Fursuit prices</h2>
               <ul className="mt-8 flex flex-col gap-4">
-                {prices.map((item) => (
+                {prices.map((item, index) => (
                   <li key={item.name} className="flex items-center gap-3">
                     <div className="shrink-0 rounded-2xl border-[7px] border-[#c45a88] bg-white p-1.5">
-                      <img src={item.image} alt="" className="h-auto w-28 outline-none sm:w-32" />
+                      <img src={item.image} alt="" className="h-auto w-24 outline-none sm:w-28" />
                     </div>
                     <div className="min-w-0">
-                      <p className="price-bubble">{item.range}</p>
+                      <div className="flex items-center gap-2">
+                        <img
+                          src={priceTalking ? "/talk.png" : "/logo.png"}
+                          alt=""
+                          onAnimationEnd={index === 0 ? priceSettled : undefined}
+                          className={
+                            "h-12 w-auto shrink-0 outline-none " +
+                            (pricePhase === "squish"
+                              ? "bunny-squish"
+                              : pricePhase === "rise"
+                                ? "bunny-rise"
+                                : "")
+                          }
+                        />
+                        <p className="price-bubble">{item.range}</p>
+                      </div>
                       <p className="mt-2 text-lg font-extrabold text-blush">{item.name}</p>
                     </div>
                   </li>
