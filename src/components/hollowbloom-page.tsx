@@ -184,7 +184,7 @@ export function HollowbloomPage() {
         </button>
       </div>
 
-      <main id="top" className="mx-auto max-w-xl px-4 py-10 sm:px-5 sm:py-14">
+      <main id="top" className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
         <div className="plaque px-8 py-14 sm:px-12 sm:py-16">
           <header className="text-center">
             <h1>
@@ -224,7 +224,7 @@ export function HollowbloomPage() {
                       See more
                     </button>
                   </div>
-                  <img src={card.image} alt="" className="h-32 w-28 shrink-0 object-contain outline-none sm:h-40 sm:w-36" />
+                  <img src={card.image} alt="" className="h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52" />
                 </article>
               ))}
             </div>
@@ -270,13 +270,13 @@ export function HollowbloomPage() {
                       {item.name}
                     </p>
                     <div className="mt-3 flex flex-col items-center gap-2">
-                      <span className="grid h-20 w-20 place-items-center">
+                      <span className="grid h-28 w-28 place-items-center">
                         <img
                           src={priceTalking ? "/talk-price.png" : "/logo.png"}
                           alt=""
                           onAnimationEnd={index === 0 ? priceSettled : undefined}
                           className={
-                            "h-20 w-20 object-contain outline-none " +
+                            "h-28 w-28 object-contain outline-none " +
                             (pricePhase === "squish"
                               ? "bunny-squish"
                               : pricePhase === "rise"
