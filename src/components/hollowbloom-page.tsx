@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { atelierImage, cryptids, findCryptid, piece, repo, wardrobe, type Wear } from "@/data/catalog";
+import { cryptids, findCryptid, piece, repo, wardrobe, type Wear } from "@/data/catalog";
 
 const jumps = [
   {
@@ -53,13 +53,13 @@ const rules = [
       "Commissions, when they open, are for adults.",
       "No copyrighted characters, and nothing built to look like one.",
       "Say what the cryptid is. A reference with a front, a back, and the face is enough.",
-      "The atelier can turn a design down. Kindness is the whole tone.",
+      "Cryptid Bunny can turn a design down. Kindness is the whole tone.",
     ],
   },
   {
     title: "Making",
     points: [
-      "Black fur is the base. Pink, lilac, mint, and sky sit on top.",
+      "Black fur is the base. Pink, plum, yellow, and red sit on top.",
       "Split dye, bows, doll lashes, and platform paws are the house style.",
       "Changes after a look is locked get talked through before any work moves.",
       "You will see the suit while it is being built, not only at the end.",
@@ -126,8 +126,13 @@ export function HollowbloomPage() {
 
       <main id="top" className="mx-auto max-w-xl px-5 pt-16 pb-24">
         <header className="text-center">
-          <h1 className="drip text-5xl text-blush sm:text-6xl">
-            <span className="text-pink">Hollow</span>bloom
+          <img
+            src="/logo.png"
+            alt="Cryptid Bunny logo"
+            className="mx-auto h-56 w-auto outline-none"
+          />
+          <h1 className="drip mt-2 text-5xl text-blush sm:text-6xl">
+            <span className="text-pink">Cryptid</span> Bunny
           </h1>
           <p className="mt-4 text-lg text-blush">Scary-cute cryptid fursuit maker</p>
           <p className="mt-3 font-extrabold tracking-wide text-mint uppercase">Lookbook open</p>
@@ -212,15 +217,10 @@ export function HollowbloomPage() {
         <section id="gallery" className="scroll-mt-8 pt-16">
           <h2 className="text-center text-3xl font-extrabold text-blush">Gallery</h2>
           <p className="mt-3 text-center text-ash">Meet the family. Pick one, then dress it.</p>
-          <ul className="mt-8 flex flex-col gap-10">
+          <ul className="mt-8 flex flex-col gap-8">
             {cryptids.map((item) => (
-              <li key={item.id} className="text-center">
-                <img
-                  src={item.image}
-                  alt={`${item.name}, ${item.epithet}`}
-                  className="aspect-3/4 w-full rounded-2xl object-cover"
-                />
-                <h3 className="mt-3 text-xl font-extrabold text-blush">{item.name}</h3>
+              <li key={item.id} className="border-b border-pink/40 pb-8 text-center last:border-b-0">
+                <h3 className="text-xl font-extrabold text-blush">{item.name}</h3>
                 <p className="text-sm font-bold tracking-widest text-mint uppercase">{item.epithet}</p>
                 <p className="mt-1 text-ash">{item.blurb}</p>
                 <a
@@ -240,12 +240,7 @@ export function HollowbloomPage() {
           <p className="mt-3 text-center text-ash">
             Cozy on top, chunky underneath. The look stays fragile and a little mean.
           </p>
-          <img
-            src={look.image}
-            alt=""
-            className="mt-8 aspect-3/4 w-full rounded-2xl object-cover"
-          />
-          <p className="mt-4 text-center text-lg font-extrabold text-blush">{look.name}</p>
+          <p className="mt-6 text-center text-lg font-extrabold text-blush">{look.name}</p>
           <p className="mt-1 text-center text-sm text-ash">
             {dressed.upper?.name}. {dressed.lower?.name}. {dressed.legs?.name}. {dressed.feet?.name}.{" "}
             {dressed.face?.name}.
@@ -315,11 +310,6 @@ export function HollowbloomPage() {
         <section id="den" className="scroll-mt-8 pt-16">
           <h2 className="text-center text-3xl font-extrabold text-blush">The den</h2>
           <p className="mt-3 text-center text-ash">A cartoon haunted house. No overhead white light.</p>
-          <img
-            src={atelierImage}
-            alt="Black room with pink neon, pastel plush bats, and cryptid suits on stands"
-            className="mt-8 aspect-video w-full rounded-2xl object-cover"
-          />
           <ul className="mt-6 flex flex-col gap-4">
             <li>
               <p className="font-extrabold text-pink">Plush pile</p>

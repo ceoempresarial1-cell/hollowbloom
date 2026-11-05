@@ -1,5 +1,5 @@
-# Hollowbloom
+# Cryptid Bunny
 
-Scary-cute cryptid closet. Pink and black first, with lilac, mint, and sky.
+Scary-cute fursuit maker. The mark is the bunny. Black, hot pink, plum, yellow, and red.
 
-A lookbook and a doll dresser. No logo and no prices on this pass.
+A single-column lookbook. No generated photos. No prices posted.

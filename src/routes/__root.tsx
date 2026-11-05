@@ -3,7 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Hollowbloom";
+const APP_NAME = "Cryptid Bunny";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -14,12 +14,12 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "A scary-cute cryptid closet. Pink and black, with lilac, mint, and sky.",
+          "Cryptid Bunny is a scary-cute fursuit maker. Black, hot pink, plum, yellow, and red.",
       },
-      { name: "theme-color", content: "#0c070a" },
+      { name: "theme-color", content: "#050005" },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
