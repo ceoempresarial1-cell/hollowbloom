@@ -348,6 +348,14 @@ export function grokOgHeadTags({
 } = {}) {
   const title = resolveOgTitle(site, appName, host, documentTitle);
   const publicHost = resolvePublicHost(host);
+  const requestHost = String(host ?? "")
+    .split(",")[0]
+    .trim()
+    .split(":")[0]
+    .toLowerCase();
+  const imageHost =
+    publicHost ||
+    (/^[a-z0-9.-]+$/.test(requestHost) && requestHost.includes(".") ? requestHost : "");
   const tags = [
     `<meta name="twitter:card" content="summary_large_image">`,
     `<meta property="og:title" content="${escapeHtml(title)}">`,
@@ -359,11 +367,12 @@ export function grokOgHeadTags({
   if (String(site.type ?? "").toLowerCase() === "x:game") {
     tags.push(`<meta property="og:type" content="x:game">`);
   }
-  if (publicHost) {
+  if (imageHost) {
     const asset = resolveOgCardAsset(site, cwd);
     const custom = Boolean(asset);
+    if (!publicHost && !custom) return tags;
     let image = custom
-      ? `https://${publicHost}${asset.startsWith("/") ? asset : `/${asset}`}`
+      ? `https://${imageHost}${asset.startsWith("/") ? asset : `/${asset}`}`
       : `${ogServiceUrl()}/v1/card.png?host=${encodeURIComponent(publicHost)}&title=${encodeURIComponent(title)}`;
     const color = !custom ? placeholderCardColor(site) : "";
     if (color) image += `&color=${encodeURIComponent(color)}`;
