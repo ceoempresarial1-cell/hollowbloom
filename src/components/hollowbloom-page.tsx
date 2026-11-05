@@ -199,7 +199,7 @@ export function HollowbloomPage() {
             <button
               type="button"
               onClick={() => open("browse")}
-              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
+              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#e56aa8] px-6 text-sm font-extrabold tracking-widest text-[#e56aa8] uppercase"
             >
               Browse
             </button>
@@ -219,7 +219,7 @@ export function HollowbloomPage() {
                     <button
                       type="button"
                       onClick={() => open(card.id)}
-                      className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-xs font-extrabold tracking-widest text-[#6b2454] uppercase"
+                      className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#e56aa8] px-6 text-xs font-extrabold tracking-widest text-[#e56aa8] uppercase"
                     >
                       See more
                     </button>
@@ -238,7 +238,7 @@ export function HollowbloomPage() {
               <div
                 role="img"
                 aria-label="Terms image"
-                className="mx-auto mt-5 aspect-[4/3] w-full max-w-xs rounded-3xl border-2 border-dashed border-[#c45a88] bg-white/35"
+                className="mx-auto mt-5 aspect-[4/3] w-full max-w-xs rounded-3xl border-2 border-dashed border-[#e56aa8] bg-white/35"
               />
               <ul className="mt-8 flex flex-col gap-4 text-left text-ash">
                 {terms.map((point) => (
@@ -250,7 +250,7 @@ export function HollowbloomPage() {
               <button
                 type="button"
                 onClick={() => open("browse")}
-                className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
+                className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#e56aa8] px-6 text-sm font-extrabold tracking-widest text-[#e56aa8] uppercase"
               >
                 Back
               </button>
@@ -259,14 +259,14 @@ export function HollowbloomPage() {
 
           {view === "prices" ? (
             <section className="pt-10">
-              <h2 className="mx-auto w-fit rounded-2xl border-[7px] border-[#c45a88] bg-white px-4 py-2 text-center text-3xl font-extrabold text-blush">
+              <h2 className="mx-auto w-fit rounded-2xl border-[7px] border-[#e56aa8] bg-white px-4 py-2 text-center text-3xl font-extrabold text-blush">
                 Fursuit prices
               </h2>
               <ul className="mt-8 grid grid-cols-2 gap-x-3 gap-y-8">
                 {prices.map((item, index) => (
                   <li key={item.name} className="flex flex-col items-center text-center">
                     <img src={item.image} alt="" className="h-auto w-full object-contain outline-none" />
-                    <p className="is-title mt-2 rounded-2xl border-[7px] border-[#c45a88] bg-white px-3 py-1 text-xl text-blush">
+                    <p className="is-title mt-2 rounded-2xl border-[7px] border-[#e56aa8] bg-white px-3 py-1 text-xl text-blush">
                       {item.name}
                     </p>
                     <div className="mt-3 flex flex-col items-center gap-2">
@@ -293,7 +293,7 @@ export function HollowbloomPage() {
               <button
                 type="button"
                 onClick={() => open("browse")}
-                className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
+                className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#e56aa8] px-6 text-sm font-extrabold tracking-widest text-[#e56aa8] uppercase"
               >
                 Back
               </button>
@@ -313,7 +313,7 @@ export function HollowbloomPage() {
                         <div
                           role="img"
                           aria-label={work}
-                          className="aspect-square rounded-2xl border-2 border-dashed border-[#c45a88] bg-white/35"
+                          className="aspect-square rounded-2xl border-2 border-dashed border-[#e56aa8] bg-white/35"
                         />
                       </li>
                     ))}
@@ -323,7 +323,7 @@ export function HollowbloomPage() {
               <button
                 type="button"
                 onClick={() => open("browse")}
-                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#7a2e68] px-6 text-sm font-extrabold tracking-widest text-[#6b2454] uppercase"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#e56aa8] px-6 text-sm font-extrabold tracking-widest text-[#e56aa8] uppercase"
               >
                 Back
               </button>

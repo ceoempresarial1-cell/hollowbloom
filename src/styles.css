@@ -129,17 +129,15 @@
   bottom: 4.5rem;
   margin: 0;
   padding: 0.55rem 0.6rem 0.45rem;
-  border: 3px solid #c45a88;
+  border: 3px solid #e56aa8;
   background: #fff;
-  color: #7a2e68;
+  color: #d44890;
   font-family: "Press Start 2P", monospace;
   font-size: 8px;
-  line-height: 1.5;
+  line-height: 1.6;
   letter-spacing: 0;
   white-space: nowrap;
-  image-rendering: pixelated;
-  -webkit-font-smoothing: none;
-  box-shadow: 3px 3px 0 #e7a3c4;
+  box-shadow: 3px 3px 0 #f3b4d4;
 }
 
 .bunny-bubble::after {
@@ -150,8 +148,8 @@
   width: 8px;
   height: 8px;
   background: #fff;
-  border-right: 3px solid #c45a88;
-  border-bottom: 3px solid #c45a88;
+  border-right: 3px solid #e56aa8;
+  border-bottom: 3px solid #e56aa8;
 }
 
 .price-bubble {
@@ -160,17 +158,15 @@
   display: inline-block;
   margin: 0;
   padding: 0.55rem 0.6rem 0.45rem;
-  border: 3px solid #c45a88;
+  border: 3px solid #e56aa8;
   border-radius: 0;
   background: #fff;
-  color: #7a2e68;
+  color: #d44890;
   font-family: "Press Start 2P", monospace;
   font-size: 8px;
-  line-height: 1.5;
+  line-height: 1.6;
   white-space: nowrap;
-  image-rendering: pixelated;
-  -webkit-font-smoothing: none;
-  box-shadow: 3px 3px 0 #e7a3c4;
+  box-shadow: 3px 3px 0 #f3b4d4;
   transform-origin: left bottom;
   animation: price-bob 1.6s ease-in-out infinite;
 }
@@ -222,81 +218,76 @@
   width: 8px;
   height: 8px;
   background: #fff;
-  border-top: 3px solid #c45a88;
-  border-right: 3px solid #c45a88;
+  border-top: 3px solid #e56aa8;
+  border-right: 3px solid #e56aa8;
   transform: translateX(-50%);
 }
 
 .plaque {
   background: rgb(255 212 232 / 62%);
-  border: 7px solid #c45a88;
+  border: 7px solid #e56aa8;
   border-radius: 0;
-  box-shadow: 8px 8px 0 #7a2e68;
-  color: #5a2148;
+  box-shadow: 8px 8px 0 #e56aa8;
+  color: #c43b86;
   font-family: "Press Start 2P", monospace;
-  font-size: 10px;
-  line-height: 1.8;
-  -webkit-font-smoothing: none;
+  font-size: 11px;
+  line-height: 1.9;
 }
 
 .plaque :is(h1, h2, h3, .is-title) {
   font-family: "Press Start 2P", monospace;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.7;
+  line-height: 1.8;
   text-transform: none;
-  color: #fff !important;
+  color: #ff4f93 !important;
   -webkit-text-stroke: 0;
   text-shadow:
-    3px 0 0 #7a2e68,
-    -3px 0 0 #7a2e68,
-    0 3px 0 #7a2e68,
-    0 -3px 0 #7a2e68,
-    3px 3px 0 #7a2e68,
-    -3px 3px 0 #7a2e68,
-    3px -3px 0 #7a2e68,
-    -3px -3px 0 #7a2e68;
+    2px 0 0 #ffb3d4,
+    -2px 0 0 #ffb3d4,
+    0 2px 0 #ffb3d4,
+    0 -2px 0 #ffb3d4;
 }
 
 .plaque h2 {
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 .plaque .is-title {
-  font-size: 0.62rem;
+  font-size: 11px;
 }
 
 .plaque :is(button, h2, .is-title) {
   border-radius: 0;
-  box-shadow: 4px 4px 0 #7a2e68;
+  box-shadow: 4px 4px 0 #e56aa8;
 }
 
 .plaque :is(.text-blush, .hover\:text-blush:hover) {
-  color: #4a1840;
+  color: #d44890;
 }
 
 .plaque .text-ash {
-  color: #6d3058;
+  color: #e56aa8;
 }
 
 .plaque .text-pink {
-  color: #9a1860;
+  color: #ff4f93;
 }
 
 .plaque .text-mint {
-  color: #8a4518;
+  color: #e07a3a;
 }
 
 .plaque .text-lilac {
-  color: #6b2454;
+  color: #e56aa8;
 }
 
 .plaque .text-sky {
-  color: #b42323;
+  color: #e23b3b;
 }
 
 .plaque [class*="border-pink"] {
-  border-color: color-mix(in srgb, #7a2e68 40%, transparent);
+  border-color: color-mix(in srgb, #e56aa8 55%, transparent);
 }
 
 .sticker {
