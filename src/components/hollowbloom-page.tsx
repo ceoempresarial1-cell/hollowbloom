@@ -128,11 +128,15 @@ export function HollowbloomPage() {
         <header className="text-center">
           <img
             src="/logo.png"
-            alt="Cryptid Bunny logo"
+            alt=""
             className="mx-auto h-56 w-auto outline-none"
           />
-          <h1 className="drip mt-2 text-5xl text-blush sm:text-6xl">
-            <span className="text-pink">Cryptid</span> Bunny
+          <h1 className="mt-4">
+            <img
+              src="/wordmark.png"
+              alt="Cryptid Bunny"
+              className="mx-auto w-full max-w-md outline-none"
+            />
           </h1>
           <p className="mt-4 text-lg text-blush">Scary-cute cryptid fursuit maker</p>
           <p className="mt-3 font-extrabold tracking-wide text-mint uppercase">Lookbook open</p>
