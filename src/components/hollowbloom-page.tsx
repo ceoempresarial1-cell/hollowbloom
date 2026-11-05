@@ -186,7 +186,16 @@ export function HollowbloomPage() {
       <main id="top" className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
         <div className="plaque px-8 py-14 sm:px-12 sm:py-16">
           <header className="text-center">
-            <h1>
+            <a
+              href="https://forms.gle/mRGiMVYqkNigZrft9"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#e56aa8] bg-white px-6 text-sm font-extrabold tracking-widest text-[#e56aa8] uppercase"
+            >
+              Application form
+            </a>
+            <p className="mt-2 text-ash">This link is the commission application form.</p>
+            <h1 className="mt-6">
               <img
                 src="/wordmark.png"
                 alt="Cryptid Bunny"
