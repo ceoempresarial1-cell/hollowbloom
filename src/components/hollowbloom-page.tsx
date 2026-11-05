@@ -185,7 +185,7 @@ export function HollowbloomPage() {
       </div>
 
       <main id="top" className="mx-auto max-w-xl px-4 py-10 sm:px-5 sm:py-14">
-        <div className="plaque px-5 py-10 sm:px-8 sm:py-12">
+        <div className="plaque px-8 py-14 sm:px-12 sm:py-16">
           <header className="text-center">
             <h1>
               <img
@@ -259,14 +259,14 @@ export function HollowbloomPage() {
 
           {view === "prices" ? (
             <section className="pt-10">
-              <h2 className="mx-auto w-fit rounded-2xl border-[7px] border-[#e56aa8] bg-white px-4 py-2 text-center text-3xl font-extrabold text-blush">
+              <h2 className="mx-auto w-fit rounded-2xl border-[12px] border-[#e56aa8] bg-white px-10 py-6 text-center text-3xl font-extrabold text-blush">
                 Fursuit prices
               </h2>
               <ul className="mt-8 grid grid-cols-2 gap-x-3 gap-y-8">
                 {prices.map((item, index) => (
                   <li key={item.name} className="flex flex-col items-center text-center">
                     <img src={item.image} alt="" className="h-auto w-full object-contain outline-none" />
-                    <p className="is-title mt-2 rounded-2xl border-[7px] border-[#e56aa8] bg-white px-3 py-1 text-xl text-blush">
+                    <p className="is-title mt-3 w-full rounded-2xl border-[12px] border-[#e56aa8] bg-white px-5 py-5 text-xl text-blush">
                       {item.name}
                     </p>
                     <div className="mt-3 flex flex-col items-center gap-2">
