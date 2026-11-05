@@ -15,7 +15,6 @@ const terms = [
   "All types of fursonas and furry characters are accepted.",
   "A special price may apply if a clear example of what you are looking for has not been made yet.",
   "Quotes are estimates. The final price is confirmed in writing before any payment.",
-  "Split dye, bows, doll lashes, and platform paws can be included when they are agreed in the design.",
   "Changes after a design is approved are discussed before any further work is done.",
   "Progress is shown while the suit is being built, not only when it is finished.",
 ];
@@ -231,14 +230,12 @@ export function HollowbloomPage() {
           ) : null}
 
           {view === "terms" ? (
-            <section className="pt-10 text-center">
-              <h2 className="mt-2 text-3xl font-extrabold text-blush">Terms of service</h2>
-              <p className="mt-3 text-ash">Please read these terms before requesting a commission.</p>
-              <div
-                role="img"
-                aria-label="Terms image"
-                className="mx-auto mt-5 aspect-[4/3] w-full max-w-xs rounded-3xl border-2 border-dashed border-[#e56aa8] bg-white/35"
-              />
+            <section className="pt-10">
+              <div className="flex items-center gap-4">
+                <img src="/terms-wordmark.png" alt="" className="h-28 w-auto shrink-0 outline-none sm:h-36" />
+                <h2 className="text-left text-3xl font-extrabold text-blush">Terms of service</h2>
+              </div>
+              <p className="mt-4 text-ash">Please read these terms before requesting a commission.</p>
               <ul className="mt-8 flex flex-col gap-4 text-left text-ash">
                 {terms.map((point) => (
                   <li key={point} className="border-l-2 border-lilac pl-3">
