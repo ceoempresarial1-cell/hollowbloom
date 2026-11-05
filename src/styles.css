@@ -192,11 +192,26 @@
 @keyframes price-bob-big {
   0%,
   100% {
-    transform: translateY(0) scale(1.14);
+    transform: translateY(0) scale(1.18);
   }
   50% {
-    transform: translateY(-4px) scale(1.14);
+    transform: translateY(-4px) scale(1.18);
   }
+}
+
+@keyframes price-hop {
+  0%,
+  100% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.price-hop {
+  animation: price-hop 0.7s ease-in-out infinite;
+  transform-origin: center bottom;
 }
 
 .price-bubble::after {

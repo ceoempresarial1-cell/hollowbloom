@@ -265,18 +265,20 @@ export function HollowbloomPage() {
                   <li key={item.name} className="flex items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="mb-2 text-lg font-extrabold text-blush">{item.name}</p>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-end gap-2">
                         <img
                           src={priceTalking ? "/talk-price.png" : "/logo.png"}
                           alt=""
                           onAnimationEnd={index === 0 ? priceSettled : undefined}
                           className={
-                            "h-16 w-auto shrink-0 outline-none " +
+                            "h-20 w-auto shrink-0 translate-y-1 outline-none " +
                             (pricePhase === "squish"
                               ? "bunny-squish"
                               : pricePhase === "rise"
                                 ? "bunny-rise"
-                                : "")
+                                : priceTalking
+                                  ? "price-hop"
+                                  : "")
                           }
                         />
                         <p className="price-bubble">{item.range}</p>
