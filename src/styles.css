@@ -9,7 +9,7 @@
   --color-lilac: #c2185b;
   --color-mint: #ffcc4d;
   --color-sky: #ff2a2a;
-  --font-display: "Pacifico", "Trebuchet MS", cursive;
+  --font-display: "Press Start 2P", monospace;
   --font-sans: "Press Start 2P", monospace;
   --radius-card: 1.75rem;
 }
@@ -230,23 +230,45 @@
 .plaque {
   background: rgb(255 212 232 / 62%);
   border: 7px solid #c45a88;
-  border-radius: 2.4rem;
+  border-radius: 0;
+  box-shadow: 8px 8px 0 #7a2e68;
   color: #5a2148;
   font-family: "Press Start 2P", monospace;
   font-size: 10px;
   line-height: 1.8;
+  -webkit-font-smoothing: none;
 }
 
 .plaque :is(h1, h2, h3, .is-title) {
-  font-family: "Pacifico", cursive;
+  font-family: "Press Start 2P", monospace;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  letter-spacing: 0;
+  line-height: 1.7;
   text-transform: none;
+  color: #fff !important;
+  -webkit-text-stroke: 0;
+  text-shadow:
+    3px 0 0 #7a2e68,
+    -3px 0 0 #7a2e68,
+    0 3px 0 #7a2e68,
+    0 -3px 0 #7a2e68,
+    3px 3px 0 #7a2e68,
+    -3px 3px 0 #7a2e68,
+    3px -3px 0 #7a2e68,
+    -3px -3px 0 #7a2e68;
 }
 
 .plaque h2 {
-  font-size: 1.7rem;
+  font-size: 0.9rem;
+}
+
+.plaque .is-title {
+  font-size: 0.62rem;
+}
+
+.plaque :is(button, h2, .is-title) {
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #7a2e68;
 }
 
 .plaque :is(.text-blush, .hover\:text-blush:hover) {

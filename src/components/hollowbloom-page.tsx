@@ -265,7 +265,7 @@ export function HollowbloomPage() {
               <ul className="mt-8 grid grid-cols-2 gap-x-3 gap-y-8">
                 {prices.map((item, index) => (
                   <li key={item.name} className="flex flex-col items-center text-center">
-                    <img src={item.image} alt="" className="h-36 w-full object-contain outline-none" />
+                    <img src={item.image} alt="" className="h-auto w-full object-contain outline-none" />
                     <p className="is-title mt-2 rounded-2xl border-[7px] border-[#c45a88] bg-white px-3 py-1 text-xl text-blush">
                       {item.name}
                     </p>
