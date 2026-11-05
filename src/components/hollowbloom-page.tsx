@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const prices = [
-  { name: "Fullsuit", image: "/prices/fullsuit.png" },
+  { name: "Fullsuit", image: "/prices/fullsuit-v2.png" },
   { name: "Full partial", image: "/prices/full-partial.webp" },
   { name: "Mini partial", image: "/prices/mini-partial.webp" },
   { name: "Head", image: "/prices/head.webp" },
