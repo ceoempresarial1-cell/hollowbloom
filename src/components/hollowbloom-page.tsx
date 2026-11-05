@@ -262,33 +262,31 @@ export function HollowbloomPage() {
               <h2 className="mx-auto w-fit rounded-2xl border-[7px] border-[#c45a88] bg-white px-4 py-2 text-center text-3xl font-extrabold text-blush">
                 Fursuit prices
               </h2>
-              <ul className="mt-8 flex flex-col gap-6">
+              <ul className="mt-8 grid grid-cols-2 gap-x-3 gap-y-8">
                 {prices.map((item, index) => (
-                  <li key={item.name} className="flex items-center gap-3">
-                    <div className="min-w-0 flex-1">
-                      <p className="mb-3 inline-block rounded-2xl border-[7px] border-[#c45a88] bg-white px-3 py-1 text-lg font-extrabold text-blush">
-                        {item.name}
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <span className="grid h-24 w-24 shrink-0 place-items-center">
-                          <img
-                            src={priceTalking ? "/talk-price.png" : "/logo.png"}
-                            alt=""
-                            onAnimationEnd={index === 0 ? priceSettled : undefined}
-                            className={
-                              "h-24 w-24 object-contain outline-none " +
-                              (pricePhase === "squish"
-                                ? "bunny-squish"
-                                : pricePhase === "rise"
-                                  ? "bunny-rise"
-                                  : "price-hop")
-                            }
-                          />
-                        </span>
-                        <p className="price-bubble">{item.range}</p>
-                      </div>
+                  <li key={item.name} className="flex flex-col items-center text-center">
+                    <img src={item.image} alt="" className="h-36 w-full object-contain outline-none" />
+                    <p className="is-title mt-2 rounded-2xl border-[7px] border-[#c45a88] bg-white px-3 py-1 text-xl text-blush">
+                      {item.name}
+                    </p>
+                    <div className="mt-3 flex flex-col items-center gap-2">
+                      <span className="grid h-20 w-20 place-items-center">
+                        <img
+                          src={priceTalking ? "/talk-price.png" : "/logo.png"}
+                          alt=""
+                          onAnimationEnd={index === 0 ? priceSettled : undefined}
+                          className={
+                            "h-20 w-20 object-contain outline-none " +
+                            (pricePhase === "squish"
+                              ? "bunny-squish"
+                              : pricePhase === "rise"
+                                ? "bunny-rise"
+                                : "price-hop")
+                          }
+                        />
+                      </span>
+                      <p className="price-bubble">{item.range}</p>
                     </div>
-                    <img src={item.image} alt="" className="h-auto w-28 shrink-0 outline-none sm:w-36" />
                   </li>
                 ))}
               </ul>
