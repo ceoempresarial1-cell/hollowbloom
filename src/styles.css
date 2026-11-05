@@ -212,18 +212,18 @@
 
 @keyframes icon-bounce {
   0%,
-  72%,
   100% {
+    transform: translateY(5px) scale(1.06, 0.9);
+  }
+  22% {
     transform: translateY(0) scale(1, 1);
   }
-  28% {
+  40%,
+  62% {
     transform: translateY(-12px) scale(0.98, 1.03);
   }
-  48% {
-    transform: translateY(-12px) scale(0.98, 1.03);
-  }
-  64% {
-    transform: translateY(5px) scale(1.06, 0.9);
+  82% {
+    transform: translateY(0) scale(1, 1);
   }
 }
 

@@ -78,10 +78,12 @@ const bunnyLines = ["hii <3", "hehe", "hihi!", "helloo", ":3", "teehee", "^^", "
 
 type View = "browse" | "terms" | "prices" | "gallery";
 
+const browseFaces = ["/logo.png", "/confused-v2.png", "/talk.png"] as const;
+
 const cards = [
-  { id: "terms", image: "/logo.png" },
-  { id: "prices", image: "/confused-v2.png" },
-  { id: "gallery", image: "/talk.png" },
+  { id: "terms" },
+  { id: "prices" },
+  { id: "gallery" },
 ] as const;
 
 export function HollowbloomPage() {
@@ -101,6 +103,7 @@ export function HollowbloomPage() {
   const [priceTalking, setPriceTalking] = useState(false);
   const [pricePhase, setPricePhase] = useState<"idle" | "squish" | "rise">("idle");
   const [lang, setLang] = useState<Lang>("en");
+  const [browseStep, setBrowseStep] = useState([0, 1, 2]);
   const talkRef = useRef<() => void>(() => {});
   const text = copy[lang];
 
@@ -286,7 +289,7 @@ export function HollowbloomPage() {
 
           {view === "browse" ? (
             <div id="browse" className="flex flex-col">
-              {cards.map((card) => (
+              {cards.map((card, index) => (
                 <article key={card.id} className="flex items-center gap-4 border-b border-pink/40 py-8 last:border-b-0">
                   <div className="min-w-0 flex-1">
                     <h2 className="text-sm font-extrabold tracking-widest text-blush uppercase">
@@ -303,7 +306,14 @@ export function HollowbloomPage() {
                       {text.more}
                     </button>
                   </div>
-                  <img src={card.image} alt="" className={"icon-bounce h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52 " + (card.id === "prices" ? "delay-1" : card.id === "gallery" ? "delay-2" : "")} />
+                  <img
+                    src={browseFaces[browseStep[index] % browseFaces.length]}
+                    alt=""
+                    onAnimationIteration={() =>
+                      setBrowseStep((steps) => steps.map((step, i) => (i === index ? step + 1 : step)))
+                    }
+                    className={"icon-bounce h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52 " + (card.id === "prices" ? "delay-1" : card.id === "gallery" ? "delay-2" : "")}
+                  />
                 </article>
               ))}
             </div>
