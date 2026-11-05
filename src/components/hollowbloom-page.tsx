@@ -78,7 +78,19 @@ const bunnyLines = ["hii <3", "hehe", "hihi!", "helloo", ":3", "teehee", "^^", "
 
 type View = "browse" | "terms" | "prices" | "gallery";
 
-const browseFaces = ["/logo.png", "/confused-v2.png", "/talk.png"] as const;
+const browseFaces = ["/logo.png", "/confused-v2.png", "/talk.png", "/talk-price.png"] as const;
+
+function nextDifferentFace(steps: number[], index: number) {
+  const used = new Set(steps.filter((_, i) => i !== index));
+  let step = steps[index];
+  for (let n = 0; n < browseFaces.length; n += 1) {
+    step = (step + 1) % browseFaces.length;
+    if (!used.has(step)) break;
+  }
+  const next = steps.slice();
+  next[index] = step;
+  return next;
+}
 
 const cards = [
   { id: "terms" },
@@ -309,17 +321,8 @@ export function HollowbloomPage() {
                   <img
                     src={browseFaces[browseStep[index] % browseFaces.length]}
                     alt=""
-                    onAnimationIteration={() =>
-                      setBrowseStep((steps) => {
-                        const next = steps.slice();
-                        const other = (index + 1) % next.length;
-                        const held = next[index];
-                        next[index] = next[other];
-                        next[other] = held;
-                        return next;
-                      })
-                    }
-                    className={"icon-bounce h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52 " + (card.id === "prices" ? "delay-1" : card.id === "gallery" ? "delay-2" : "")}
+                    onAnimationIteration={() => setBrowseStep((steps) => nextDifferentFace(steps, index))}
+                    className={"icon-bounce h-44 w-40 shrink-0 object-contain outline-none sm:h-56 sm:w-52 " + (index === 1 ? "pace-1" : index === 2 ? "pace-2" : "")}
                   />
                 </article>
               ))}

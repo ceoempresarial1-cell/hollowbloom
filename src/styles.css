@@ -255,12 +255,12 @@
   will-change: transform;
 }
 
-.icon-bounce.delay-1 {
-  animation-delay: 0.45s;
+.icon-bounce.pace-1 {
+  animation-duration: 1.7s;
 }
 
-.icon-bounce.delay-2 {
-  animation-delay: 0.9s;
+.icon-bounce.pace-2 {
+  animation-duration: 2.05s;
 }
 
 @media (prefers-reduced-motion: reduce) {
