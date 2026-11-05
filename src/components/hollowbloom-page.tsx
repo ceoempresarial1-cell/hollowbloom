@@ -263,17 +263,15 @@ export function HollowbloomPage() {
               <ul className="mt-8 flex flex-col gap-4">
                 {prices.map((item, index) => (
                   <li key={item.name} className="flex items-center gap-3">
-                    <div className="shrink-0 rounded-2xl border-[7px] border-[#c45a88] bg-white p-1.5">
-                      <img src={item.image} alt="" className="h-auto w-24 outline-none sm:w-28" />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="mb-2 text-lg font-extrabold text-blush">{item.name}</p>
+                      <div className="flex items-end">
                         <img
-                          src={priceTalking ? "/talk.png" : "/logo.png"}
+                          src={priceTalking ? "/talk-price.png" : "/logo.png"}
                           alt=""
                           onAnimationEnd={index === 0 ? priceSettled : undefined}
                           className={
-                            "h-12 w-auto shrink-0 outline-none " +
+                            "h-16 w-auto shrink-0 outline-none " +
                             (pricePhase === "squish"
                               ? "bunny-squish"
                               : pricePhase === "rise"
@@ -283,8 +281,8 @@ export function HollowbloomPage() {
                         />
                         <p className="price-bubble">{item.range}</p>
                       </div>
-                      <p className="mt-2 text-lg font-extrabold text-blush">{item.name}</p>
                     </div>
+                    <img src={item.image} alt="" className="h-auto w-24 shrink-0 outline-none sm:w-28" />
                   </li>
                 ))}
               </ul>
