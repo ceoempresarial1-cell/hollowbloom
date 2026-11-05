@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type AnimationEvent } from "react";
 
 const prices = [
-  { name: "Fullsuit", image: "/prices/fullsuit-v2.png" },
-  { name: "Full partial", image: "/prices/full-partial.webp" },
-  { name: "Mini partial", image: "/prices/mini-partial.webp" },
-  { name: "Head", image: "/prices/head.webp" },
+  { name: "Fullsuit", image: "/prices/fullsuit-v2.png", range: "800 to 1k+" },
+  { name: "Full partial", image: "/prices/full-partial.webp", range: "300 to 450" },
+  { name: "Mini partial", image: "/prices/mini-partial.webp", range: "250 to 300" },
+  { name: "Head", image: "/prices/head.webp", range: "150 to 250" },
 ] as const;
 
 const works = ["Partials", "Heads", "Paws", "Feetpaws", "Bodies", "Digitigrade", "Plantigrade"] as const;
@@ -35,7 +35,7 @@ const cards = [
     id: "prices",
     title: "Fursuit prices",
     blurb: "Mini partial, full partial, head, and fullsuit.",
-    image: "/prices/fullsuit-v2.png",
+    image: "/confused.png",
   },
   {
     id: "gallery",
@@ -246,11 +246,14 @@ export function HollowbloomPage() {
               <h2 className="text-center text-3xl font-extrabold text-blush">Fursuit prices</h2>
               <ul className="mt-8 flex flex-col gap-4">
                 {prices.map((item) => (
-                  <li key={item.name} className="flex items-center gap-4">
-                    <div className="shrink-0 rounded-2xl border-[7px] border-[#c45a88] bg-white p-2">
-                      <img src={item.image} alt="" className="h-auto w-44 outline-none sm:w-52" />
+                  <li key={item.name} className="flex items-center gap-3">
+                    <div className="shrink-0 rounded-2xl border-[7px] border-[#c45a88] bg-white p-1.5">
+                      <img src={item.image} alt="" className="h-auto w-28 outline-none sm:w-32" />
                     </div>
-                    <span className="text-lg font-extrabold text-blush">{item.name}</span>
+                    <div className="min-w-0">
+                      <p className="price-bubble">{item.range}</p>
+                      <p className="mt-2 text-lg font-extrabold text-blush">{item.name}</p>
+                    </div>
                   </li>
                 ))}
               </ul>
