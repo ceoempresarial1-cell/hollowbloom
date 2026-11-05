@@ -211,28 +211,48 @@
 }
 
 @keyframes icon-bounce {
-  0%,
-  100% {
-    transform: translateY(7px) scale(1.1, 0.86);
+  0% {
+    transform: translateY(6px) scale(1.07, 0.9);
   }
-  18% {
-    transform: translateY(-6px) scale(0.94, 1.1);
+  8% {
+    transform: translateY(1px) scale(1.02, 0.98);
   }
-  34%,
-  50% {
-    transform: translateY(-20px) scale(0.96, 1.06);
+  16% {
+    transform: translateY(-6px) scale(0.98, 1.04);
   }
-  68% {
-    transform: translateY(0) scale(1, 1);
+  26% {
+    transform: translateY(-13px) scale(0.97, 1.05);
+  }
+  36% {
+    transform: translateY(-17px) scale(0.98, 1.03);
+  }
+  46% {
+    transform: translateY(-15px) scale(0.99, 1.02);
+  }
+  56% {
+    transform: translateY(-8px) scale(1, 1.01);
+  }
+  66% {
+    transform: translateY(-1px) scale(1.02, 0.98);
+  }
+  74% {
+    transform: translateY(5px) scale(1.07, 0.9);
   }
   82% {
-    transform: translateY(3px) scale(1.05, 0.93);
+    transform: translateY(-4px) scale(0.98, 1.04);
+  }
+  90% {
+    transform: translateY(1px) scale(1.02, 0.98);
+  }
+  100% {
+    transform: translateY(6px) scale(1.07, 0.9);
   }
 }
 
 .icon-bounce {
-  animation: icon-bounce 1.05s cubic-bezier(0.4, 1.45, 0.55, 1) infinite;
+  animation: icon-bounce 1.35s linear infinite;
   transform-origin: center bottom;
+  will-change: transform;
 }
 
 .icon-bounce.delay-1 {
